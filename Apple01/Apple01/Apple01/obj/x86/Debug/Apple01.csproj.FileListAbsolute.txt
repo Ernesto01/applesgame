@@ -1,0 +1,18 @@
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01\bin\x86\Debug\Apple01.exe
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01\bin\x86\Debug\Apple01.pdb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01\obj\x86\Debug\Apple01.exe
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01\obj\x86\Debug\Apple01.pdb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\apple.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\char01.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Fonts\Score.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\apple.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\char01.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Fonts\Score.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\bin\x86\Debug\Apple01.exe
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\bin\x86\Debug\Apple01.pdb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\obj\x86\Debug\Apple01.exe
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\obj\x86\Debug\Apple01.pdb
