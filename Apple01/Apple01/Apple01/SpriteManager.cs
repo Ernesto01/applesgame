@@ -44,8 +44,11 @@ namespace Apple01
             spriteBatch = new SpriteBatch(Game.GraphicsDevice);
 
             player = new UserControlledSprite(Game.Content.Load<Texture2D>(@"Images/char01"),
-                        Vector2.Zero, new Point(57, 95), 10, new Point(0, 0), new Point(1, 4),
+                        new Vector2(0,500), new Point(57, 95), 10, new Point(0, 0), new Point(1, 1),
                         new Vector2(6, 6));
+            for(int i = 0; i < 10; ++i)
+                spriteList.Add(new AppleSprite(Game.Content.Load<Texture2D>(@"Images\apple"), 
+                    new Point(28, 32), 5, new Vector2(0, 2), Game.Window.ClientBounds));
 
             base.LoadContent();
         }
@@ -58,13 +61,21 @@ namespace Apple01
         {
             player.Update(gameTime, Game.Window.ClientBounds);
 
+            foreach (Sprite sprite in spriteList)
+                sprite.Update(gameTime, Game.Window.ClientBounds);
+
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
+
+            // Draw the player
             player.Draw(gameTime, spriteBatch);
+            // Draw the apples
+            foreach (Sprite sprite in spriteList)
+                sprite.Draw(gameTime, spriteBatch);
 
             spriteBatch.End();
             

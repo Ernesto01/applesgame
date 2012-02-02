@@ -24,10 +24,10 @@ namespace Apple01
                     inputDirection.X -= 1;
                 if (Keyboard.GetState().IsKeyDown(Keys.Right))
                     inputDirection.X += 1;
-                if (Keyboard.GetState().IsKeyDown(Keys.Up))
-                    inputDirection.Y -= 1;
-                if (Keyboard.GetState().IsKeyDown(Keys.Down))
-                    inputDirection.Y += 1;
+                //if (Keyboard.GetState().IsKeyDown(Keys.Up))
+                //    inputDirection.Y -= 1;
+                //if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                //    inputDirection.Y += 1;
 
                 GamePadState gamepadState = GamePad.GetState(PlayerIndex.One);
                 if (gamepadState.ThumbSticks.Left.X != 0)

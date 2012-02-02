@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\apple.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\apple.xnb</Output>
       <Time>2012-01-28T20:46:00-08:00</Time>
     </Item>
     <Item>
@@ -16,7 +16,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\char01.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\char01.xnb</Output>
       <Time>2012-01-28T21:48:50-08:00</Time>
     </Item>
     <Item>
@@ -25,7 +25,7 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Fonts\Score.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Fonts\Score.xnb</Output>
       <Time>2012-01-30T00:03:22-08:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -34,10 +34,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

@@ -1,2 +1,2 @@
 C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01Content\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\Apple01\Apple01\Apple01Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01Content\obj\x86\Debug\ResolveAssemblyReference.cache
