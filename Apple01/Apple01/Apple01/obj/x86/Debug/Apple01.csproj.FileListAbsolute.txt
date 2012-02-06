@@ -7,12 +7,12 @@ C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\A
 C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\apple.xnb
 C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\char01.xnb
 C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Fonts\Score.xnb
-C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\apple.xnb
-C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\char01.xnb
-C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Fonts\Score.xnb
-C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\bin\x86\Debug\Apple01.exe
-C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\bin\x86\Debug\Apple01.pdb
-C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\obj\x86\Debug\Apple01.exe
-C:\Users\camilo2\Git\applesgame\Apple01\Apple01\Apple01\obj\x86\Debug\Apple01.pdb
+G:\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\apple.xnb
+G:\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Images\char01.xnb
+G:\Apple01\Apple01\Apple01\bin\x86\Debug\Content\Fonts\Score.xnb
+G:\Apple01\Apple01\Apple01\bin\x86\Debug\Apple01.exe
+G:\Apple01\Apple01\Apple01\bin\x86\Debug\Apple01.pdb
+G:\Apple01\Apple01\Apple01\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\Apple01\Apple01\Apple01\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+G:\Apple01\Apple01\Apple01\obj\x86\Debug\Apple01.exe
+G:\Apple01\Apple01\Apple01\obj\x86\Debug\Apple01.pdb

@@ -17,6 +17,7 @@ namespace Apple01
     /// </summary>
     public class SpriteManager : Microsoft.Xna.Framework.DrawableGameComponent
     {
+        const int GROUND_LEVEL = 500;
         SpriteBatch spriteBatch;
         UserControlledSprite player;
         List<Sprite> spriteList = new List<Sprite>();
@@ -43,9 +44,12 @@ namespace Apple01
         {
             spriteBatch = new SpriteBatch(Game.GraphicsDevice);
 
+            // Load player controlled character
             player = new UserControlledSprite(Game.Content.Load<Texture2D>(@"Images/char01"),
-                        new Vector2(0,500), new Point(57, 95), 10, new Point(0, 0), new Point(1, 1),
+                        new Vector2(0,GROUND_LEVEL), new Point(57, 95), 10, new Point(0, 0), new Point(1, 1),
                         new Vector2(6, 6));
+
+            // Load game controlled sprites
             for(int i = 0; i < 10; ++i)
                 spriteList.Add(new AppleSprite(Game.Content.Load<Texture2D>(@"Images\apple"), 
                     new Point(28, 32), 5, new Vector2(0, 2), Game.Window.ClientBounds));
@@ -61,8 +65,23 @@ namespace Apple01
         {
             player.Update(gameTime, Game.Window.ClientBounds);
 
-            foreach (Sprite sprite in spriteList)
+            for(int i = 0; i < spriteList.Count; ++i)
+            {
+                Sprite sprite = spriteList[i];
                 sprite.Update(gameTime, Game.Window.ClientBounds);
+
+                // Check for colllisions
+                if (sprite.collisionRect.Intersects(player.collisionRect))
+                {
+                    spriteList.RemoveAt(i);
+                    --i;
+                }
+                if (sprite.collisionRect.Bottom >= GROUND_LEVEL+85)
+                {
+                    sprite.speed.Y = 0;
+                }
+
+            }
 
             base.Update(gameTime);
         }

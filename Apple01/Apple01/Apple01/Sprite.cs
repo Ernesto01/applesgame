@@ -10,7 +10,8 @@ namespace Apple01
         Point currentFrame, sheetSize;
         int collisionOffset, millisecondsPerFrame, timeSinceLastFrame = 0;
         const int defaultMillisecondsPerFrame = 16;
-        protected Vector2 speed, position;
+        public Vector2 speed; 
+        protected Vector2 position;
 
         /* Properties */
         public abstract Vector2 direction
@@ -51,6 +52,8 @@ namespace Apple01
 
 
         /* Functions */
+        // Update method will iterate through sprites in spritesheet to do animation
+        // and move between sprites given a set framerate
         public virtual void Update(GameTime gameTime, Rectangle clientBounds)
         {
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
