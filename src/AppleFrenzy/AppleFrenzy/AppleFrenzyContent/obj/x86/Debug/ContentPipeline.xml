@@ -7,8 +7,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Fonts\Score.xnb</Output>
-      <Time>2012-01-30T00:03:20.7270697-08:00</Time>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Fonts\Score.xnb</Output>
+      <Time>2012-01-30T00:03:22-08:00</Time>
     </Item>
     <Item>
       <Source>Images\Apple.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Apple.xnb</Output>
-      <Time>2012-01-28T20:45:59.6581369-08:00</Time>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Apple.xnb</Output>
+      <Time>2012-01-28T20:46:00-08:00</Time>
     </Item>
     <Item>
       <Source>Images\Bee1.png</Source>
@@ -25,7 +25,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee1.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee1.xnb</Output>
       <Time>2010-11-08T10:20:52-08:00</Time>
     </Item>
     <Item>
@@ -34,7 +34,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee2.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee2.xnb</Output>
       <Time>2010-11-08T10:20:52-08:00</Time>
     </Item>
     <Item>
@@ -43,7 +43,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Die.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Die.xnb</Output>
       <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
@@ -52,7 +52,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Idle.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Idle.xnb</Output>
       <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
@@ -61,7 +61,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Jump.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Jump.xnb</Output>
       <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
@@ -70,7 +70,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_0.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_0.xnb</Output>
       <Time>2010-09-27T11:53:10-07:00</Time>
     </Item>
     <Item>
@@ -79,7 +79,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_1.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_1.xnb</Output>
       <Time>2010-09-27T11:53:10-07:00</Time>
     </Item>
     <Item>
@@ -88,7 +88,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_2.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_2.xnb</Output>
       <Time>2010-09-27T11:53:10-07:00</Time>
     </Item>
     <Item>
@@ -97,7 +97,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_0.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_0.xnb</Output>
       <Time>2010-09-27T11:53:10-07:00</Time>
     </Item>
     <Item>
@@ -106,7 +106,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_1.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_1.xnb</Output>
       <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
@@ -115,7 +115,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_2.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_2.xnb</Output>
       <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
@@ -124,7 +124,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_0.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_0.xnb</Output>
       <Time>2010-09-27T11:53:10-07:00</Time>
     </Item>
     <Item>
@@ -133,7 +133,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_1.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_1.xnb</Output>
       <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
@@ -142,7 +142,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_2.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_2.xnb</Output>
       <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
@@ -151,7 +151,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Run.xnb</Output>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Run.xnb</Output>
       <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -160,39 +160,39 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzyContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzyContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzyContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzyContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2010-08-23T13:41:18-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2010-08-23T13:41:18-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2010-08-23T13:41:18-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2010-08-23T13:41:18-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2010-08-23T13:41:18-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2010-08-23T13:41:18-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2011-07-10T02:09:18.0621698-07:00</Value>
+        <Value>2012-01-25T22:39:04.9750562-08:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

@@ -36,7 +36,7 @@ namespace Apple01
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            graphics.PreferredBackBufferHeight = 640;
+            graphics.PreferredBackBufferHeight = 680;
             graphics.PreferredBackBufferWidth = 1124;
         }
 

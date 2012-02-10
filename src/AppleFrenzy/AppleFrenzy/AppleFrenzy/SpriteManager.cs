@@ -18,7 +18,7 @@ namespace Apple01
     /// </summary>
     public class SpriteManager : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        const int GROUND_LEVEL = 500;
+        public const int GROUND_LEVEL = 500;
 
         SpriteBatch spriteBatch;
         UserControlledSprite player;
@@ -83,7 +83,7 @@ namespace Apple01
                     --i;
                     //player.Reset(new Vector2(0, GROUND_LEVEL));
                 }
-                if (sprite.collisionRect.Bottom >= GROUND_LEVEL+70)
+                if (sprite.collisionRect.Bottom >= GROUND_LEVEL+78)
                 {
                     sprite.velocity.Y = 0;
                 }

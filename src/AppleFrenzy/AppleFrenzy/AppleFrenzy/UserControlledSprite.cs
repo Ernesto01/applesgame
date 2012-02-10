@@ -9,7 +9,7 @@ namespace Apple01
 {
     class UserControlledSprite : Sprite
     {
-        Animation idle, run, die, jump;
+        public Animation idle, run, die, jump;
         private SpriteEffects flip = SpriteEffects.None;
         float movement;
      
@@ -18,10 +18,16 @@ namespace Apple01
         /* Constructors */
         public UserControlledSprite(Texture2D textImage, Vector2 pos, Point frameSize,
                 int collisionOffset, Point currentFrame, Point sheetSize, Vector2 speed, float size)
-            : base(textImage, pos, frameSize, collisionOffset, currentFrame, sheetSize, speed, size) { }
+            : base(textImage, pos, frameSize, collisionOffset, currentFrame, sheetSize, speed, size) 
+        {
+            physics = new PlayerPhysics(this);
+        }
         public UserControlledSprite(Texture2D textImage, Vector2 pos, Point frameSize,
                 int collisionOffset, Point currentFrame, Point sheetSize, Vector2 speed, float size, int millisecondsPerFrame)
-            : base(textImage, pos, frameSize, collisionOffset, currentFrame, sheetSize, speed, size, millisecondsPerFrame) { }
+            : base(textImage, pos, frameSize, collisionOffset, currentFrame, sheetSize, speed, size, millisecondsPerFrame) 
+        {
+            physics = new PlayerPhysics(this);
+        }
 
 
         public override Vector2 direction
@@ -49,7 +55,7 @@ namespace Apple01
         public void Reset(Vector2 position)
         {
             this.position = position;
-            //velocity = Vector2.Zero;
+            velocity = Vector2.Zero;
             IsAlive = true;
             currentAnimation = idle;
         }
@@ -58,14 +64,14 @@ namespace Apple01
         public override void Initialize(IServiceProvider serviceProvider)
         {
             IsAlive = true;
-            physics = new PlayerPhysics();
+      
             ContentManager content = new ContentManager(serviceProvider, "Content");
             idle = new Animation(content.Load<Texture2D>(@"Images/Idle"), new Point(64, 64),
                                 new Point(0, 0), new Point(1, 1));
             run = new Animation(content.Load<Texture2D>(@"Images/Run"), new Point(64, 64),
                                 new Point(0, 0), new Point(10, 1));
             jump = new Animation(content.Load<Texture2D>(@"Images/Jump"), new Point(64, 64),
-                                new Point(0, 0), new Point(11, 1));
+                                new Point(0, 0), new Point(11, 1), 70);
             die = new Animation(content.Load<Texture2D>(@"Images/Die"), new Point(64, 64),
                                 new Point(0, 0), new Point(12, 1));
         }
@@ -84,15 +90,11 @@ namespace Apple01
 
         public override void Update(GameTime gameTime, Rectangle clientBounds)
         {
-            // Move sprite based on direction
-            //position += direction;
-            //float movement = direction.X;
-
             getInput(Keyboard.GetState());   
 
             physics.ApplyPhysics(gameTime, ref position, ref velocity, movement);
 
-            if (IsAlive)
+            if (IsAlive && physics.OnGround)
             {
                 if (Math.Abs(velocity.X) - 0.02f > 0)
                     currentAnimation = run;

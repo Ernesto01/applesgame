@@ -13,7 +13,7 @@ namespace AppleFrenzy
     class Animation
     {
         // Define animation speed
-        const int DefaultMillisecondsPerFrame = 16;
+        const int DefaultMillisecondsPerFrame = 48;
 
         // Local data
         public Texture2D Image { get; private set; }

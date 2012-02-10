@@ -8,7 +8,7 @@ namespace Apple01
     abstract class Sprite
     {
         // Current animation, only one animation may play at a time.
-        protected Animation currentAnimation;   
+        public Animation currentAnimation;   
         int collisionOffset;
         public Vector2 velocity; 
         public Vector2 position;
