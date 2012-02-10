@@ -1,0 +1,17 @@
+Content\Fonts\Score.xnb
+Content\Images\Apple.xnb
+Content\Images\Bee1.xnb
+Content\Images\Bee2.xnb
+Content\Images\Die.xnb
+Content\Images\Idle.xnb
+Content\Images\Jump.xnb
+Content\Images\Layer0_0.xnb
+Content\Images\Layer0_1.xnb
+Content\Images\Layer0_2.xnb
+Content\Images\Layer1_0.xnb
+Content\Images\Layer1_1.xnb
+Content\Images\Layer1_2.xnb
+Content\Images\Layer2_0.xnb
+Content\Images\Layer2_1.xnb
+Content\Images\Layer2_2.xnb
+Content\Images\Run.xnb

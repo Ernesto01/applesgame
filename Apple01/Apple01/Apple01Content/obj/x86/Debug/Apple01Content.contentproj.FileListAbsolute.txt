@@ -1,2 +1,0 @@
-C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\Apple01\Apple01\Apple01Content\obj\x86\Debug\ResolveAssemblyReference.cache
-G:\Apple01\Apple01\Apple01Content\obj\x86\Debug\ResolveAssemblyReference.cache

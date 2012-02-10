@@ -1,0 +1,69 @@
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Fonts\Score.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Apple.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee1.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee2.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Die.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Idle.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Jump.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_0.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_1.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_2.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_0.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_1.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_2.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_0.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_1.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_2.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Run.xnb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\AppleFrenzy.exe
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\AppleFrenzy.pdb
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\AppleFrenzy.exe
+C:\Users\camilo\Documents\Visual Studio 2010\Projects\_CSharp Projects\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\AppleFrenzy.pdb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Fonts\Score.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Apple.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee1.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee2.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Die.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Idle.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Jump.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_0.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_1.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_2.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_0.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_1.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_2.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_0.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_1.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_2.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Run.xnb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\AppleFrenzy.exe
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\AppleFrenzy.pdb
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\AppleFrenzy.exe
+C:\Users\camilo2\Documents\Visual Studio 2010\Projects\_C#\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\AppleFrenzy.pdb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Fonts\Score.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Apple.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee1.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee2.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Die.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Idle.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Jump.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_0.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_1.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_2.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_0.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_1.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_2.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_0.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_1.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_2.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Run.xnb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\AppleFrenzy.exe
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\AppleFrenzy.pdb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\AppleFrenzy.exe
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\AppleFrenzy.pdb
