@@ -20,10 +20,7 @@ namespace Apple01
         SpriteBatch spriteBatch;
         SpriteManager spriteManager;
         SpriteFont timerFont;
-<<<<<<< HEAD
-=======
         Texture2D TitleScreenBackground;
->>>>>>> 27b94246bbddcde0205251b20e3e2e71a360b33c
         float gameTimer = 30;
 
         enum GameState { Start, InGame, GameOver };
@@ -76,12 +73,9 @@ namespace Apple01
             spriteBatch = new SpriteBatch(GraphicsDevice);
             scoreFont = Content.Load<SpriteFont>(@"fonts\score");
             apple = Content.Load<Texture2D>(@"images\apple");
-<<<<<<< HEAD
             timerFont = Content.Load<SpriteFont>(@"fonts\score");
-=======
-            timerFont = Content.Load<SpriteFont>(@"fonts\timerFont");
+            timerFont = Content.Load<SpriteFont>(@"fonts\score");
             TitleScreenBackground = Content.Load<Texture2D>(@"images\FrenzyTitleScreen");
->>>>>>> 27b94246bbddcde0205251b20e3e2e71a360b33c
             
         }
 
@@ -124,11 +118,7 @@ namespace Apple01
 
                     if (gameTimer < 0)
                     {
-<<<<<<< HEAD
                         currentGameState = GameState.GameOver;
-=======
-                    currentGameState = GameState.GameOver;
->>>>>>> 27b94246bbddcde0205251b20e3e2e71a360b33c
                     }
 
 
