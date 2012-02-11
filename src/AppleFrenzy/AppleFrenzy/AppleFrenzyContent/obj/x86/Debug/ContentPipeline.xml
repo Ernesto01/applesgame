@@ -2,13 +2,13 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>Fonts\Score.spritefont</Source>
-      <Name>Fonts\Score</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Source>Images\Heart.png</Source>
+      <Name>Images\Heart</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Fonts\Score.xnb</Output>
-      <Time>2012-02-10T10:01:03.0477882-08:00</Time>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Heart.xnb</Output>
+      <Time>2007-05-26T23:10:14-07:00</Time>
     </Item>
     <Item>
       <Source>Images\Apple.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Apple.xnb</Output>
-      <Time>2012-02-10T10:01:03.0497883-08:00</Time>
+      <Time>2012-01-28T20:46:00-08:00</Time>
     </Item>
     <Item>
       <Source>Images\Bee1.png</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee1.xnb</Output>
-      <Time>2012-02-10T10:01:03.0507884-08:00</Time>
+      <Time>2010-11-08T10:20:52-08:00</Time>
     </Item>
     <Item>
       <Source>Images\Bee2.png</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee2.xnb</Output>
-      <Time>2012-02-10T10:01:03.0517884-08:00</Time>
+      <Time>2010-11-08T10:20:52-08:00</Time>
     </Item>
     <Item>
       <Source>Images\Die.png</Source>
@@ -44,7 +44,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Die.xnb</Output>
-      <Time>2012-02-10T10:01:03.0537886-08:00</Time>
+      <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
       <Source>Images\Idle.png</Source>
@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Idle.xnb</Output>
-      <Time>2012-02-10T10:01:03.0547886-08:00</Time>
+      <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
       <Source>Images\Jump.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Jump.xnb</Output>
-      <Time>2012-02-10T10:01:03.0567887-08:00</Time>
+      <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
       <Source>Images\Layer0_0.png</Source>
@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_0.xnb</Output>
-      <Time>2012-02-10T10:01:03.0597889-08:00</Time>
+      <Time>2010-09-27T11:53:10-07:00</Time>
     </Item>
     <Item>
       <Source>Images\Layer0_1.png</Source>
@@ -80,7 +80,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_1.xnb</Output>
-      <Time>2012-02-10T10:01:03.0657892-08:00</Time>
+      <Time>2010-09-27T11:53:10-07:00</Time>
     </Item>
     <Item>
       <Source>Images\Layer0_2.png</Source>
@@ -89,7 +89,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_2.xnb</Output>
-      <Time>2012-02-10T10:01:03.0697895-08:00</Time>
+      <Time>2010-09-27T11:53:10-07:00</Time>
     </Item>
     <Item>
       <Source>Images\Layer1_0.png</Source>
@@ -98,7 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_0.xnb</Output>
-      <Time>2012-02-10T10:01:03.07979-08:00</Time>
+      <Time>2010-09-27T11:53:10-07:00</Time>
     </Item>
     <Item>
       <Source>Images\Layer1_1.png</Source>
@@ -107,7 +107,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_1.xnb</Output>
-      <Time>2012-02-10T10:01:03.0887906-08:00</Time>
+      <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
       <Source>Images\Layer1_2.png</Source>
@@ -116,7 +116,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_2.xnb</Output>
-      <Time>2012-02-10T10:01:03.1067916-08:00</Time>
+      <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
       <Source>Images\Layer2_0.png</Source>
@@ -125,7 +125,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_0.xnb</Output>
-      <Time>2012-02-10T10:01:03.1107918-08:00</Time>
+      <Time>2010-09-27T11:53:10-07:00</Time>
     </Item>
     <Item>
       <Source>Images\Layer2_1.png</Source>
@@ -134,7 +134,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_1.xnb</Output>
-      <Time>2012-02-10T10:01:03.114792-08:00</Time>
+      <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
       <Source>Images\Layer2_2.png</Source>
@@ -143,7 +143,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_2.xnb</Output>
-      <Time>2012-02-10T10:01:03.1187923-08:00</Time>
+      <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
       <Source>Images\Run.png</Source>
@@ -152,12 +152,21 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Run.xnb</Output>
-      <Time>2012-02-10T10:01:03.1217924-08:00</Time>
+      <Time>2010-09-27T11:53:12-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\Score.spritefont</Source>
+      <Name>Fonts\Score</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Fonts\Score.xnb</Output>
+      <Time>2012-01-30T00:03:22-08:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
-      <TargetProfile>Reach</TargetProfile>
+      <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
       <RootDirectory>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzyContent\</RootDirectory>

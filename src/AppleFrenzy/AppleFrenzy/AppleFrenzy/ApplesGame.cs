@@ -16,23 +16,28 @@ namespace Apple01
     /// </summary>
     public class ApplesGame : Microsoft.Xna.Framework.Game
     {
+        // Graphics device allows us to talk to the GPU and draw
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        SpriteManager spriteManager;
-        SpriteFont timerFont;
-        Texture2D TitleScreenBackground;
-        float gameTimer = 30;
 
+        // Manage Sprites
+        SpriteManager spriteManager;
+
+        // Game States
         enum GameState { Start, InGame, GameOver };
         GameState currentGameState = GameState.Start;
 
+        // Score and score font
         int currentScore = 0;
         SpriteFont scoreFont;
 
         // Apple stuff
-        Texture2D apple;
-        Vector2 applePos;
-        float appleSpeed = 1.75f;
+        AppleSprite fallingApple;
+
+        // Timer and title screen background
+        SpriteFont timerFont;
+        Texture2D TitleScreenBackground;
+        float gameTimer = 30;
 
         public ApplesGame()
         {
@@ -40,6 +45,11 @@ namespace Apple01
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferHeight = 680;
             graphics.PreferredBackBufferWidth = 1124;
+        }
+
+        public void AddScore(int score)
+        {
+            currentScore += score;
         }
 
         /// <summary>
@@ -58,8 +68,6 @@ namespace Apple01
             spriteManager.Enabled = false;
             spriteManager.Visible = false;
 
-            applePos = new Vector2(150, 150);
-
             base.Initialize();
         }
 
@@ -72,10 +80,11 @@ namespace Apple01
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             scoreFont = Content.Load<SpriteFont>(@"fonts\score");
-            apple = Content.Load<Texture2D>(@"images\apple");
+           
+            fallingApple = new AppleSprite(Content.Load<Texture2D>(@"images\apple"), new Vector2(180, 180),
+                            new Point(28, 32), 0, new Vector2(0, 2), Window.ClientBounds, 1f);
             timerFont = Content.Load<SpriteFont>(@"fonts\score");
-            timerFont = Content.Load<SpriteFont>(@"fonts\score");
-            TitleScreenBackground = Content.Load<Texture2D>(@"images\FrenzyTitleScreen");
+            //TitleScreenBackground = Content.Load<Texture2D>(@"images\FrenzyTitleScreen");
             
         }
 
@@ -103,9 +112,10 @@ namespace Apple01
             {
                 case GameState.Start:
                     // Move the apple
-                    applePos.Y += appleSpeed;
-                    if (applePos.Y > Window.ClientBounds.Height /* - apple.Height*/)
-                        applePos.Y = -(apple.Height);
+                    fallingApple.Update(gameTime, Window.ClientBounds);
+                    if (fallingApple.position.Y > Window.ClientBounds.Height)
+                        fallingApple.position.Y = -19;
+
                     if (Keyboard.GetState().GetPressedKeys().Length > 0)
                     {
                         currentGameState = GameState.InGame;
@@ -114,8 +124,8 @@ namespace Apple01
                     }
                     break;
                 case GameState.InGame:
+                    // Handle timer
                     gameTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-
                     if (gameTimer < 0)
                     {
                         currentGameState = GameState.GameOver;
@@ -142,11 +152,12 @@ namespace Apple01
             switch (currentGameState)
             {
                 case GameState.Start:
-                    GraphicsDevice.Clear(Color.White);
+                    GraphicsDevice.Clear(Color.AliceBlue);
 
                     // Draw Text for intro splash screen
                     spriteBatch.Begin();
-                    spriteBatch.Draw(apple, applePos, Color.White);
+
+                    fallingApple.Draw(gameTime, spriteBatch);
 
                     string text = "Catch as many apples as you can before timer runs out";
                     spriteBatch.DrawString(scoreFont, text, new Vector2((Window.ClientBounds.Width / 2)
@@ -157,7 +168,7 @@ namespace Apple01
                     spriteBatch.DrawString(scoreFont, text, new Vector2((Window.ClientBounds.Width / 2)
                         - (scoreFont.MeasureString(text).X / 2), (Window.ClientBounds.Height / 2)
                         - (scoreFont.MeasureString(text).Y / 2) + 30), Color.SaddleBrown);
-                    spriteBatch.Draw(TitleScreenBackground, new Vector2(225, 150), Color.White);
+                    //spriteBatch.Draw(TitleScreenBackground, new Vector2(225, 150), Color.White);
 
                     spriteBatch.End();
                     break;
@@ -166,17 +177,14 @@ namespace Apple01
                     GraphicsDevice.Clear(Color.White);
                     spriteBatch.Begin();
                     spriteBatch.DrawString(scoreFont, "Score: " + currentScore, new Vector2(10, 10),
-                        Color.DarkBlue, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
-                    spriteBatch.DrawString(timerFont, "Time Remaining: " + gameTimer.ToString("0.00"), new Vector2(750, 10), Color.Red);
+                                        Color.DarkBlue, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+                    spriteBatch.DrawString(timerFont, "Time Remaining: " + gameTimer.ToString("0.00"), 
+                                        new Vector2(870, 10), Color.Red);
                     spriteBatch.End();
 
                     break;
                     
                 case GameState.GameOver:
-                    spriteBatch.Begin();
-                    spriteBatch.DrawString(scoreFont, "Total Score: " + currentScore, new Vector2(450, 350),
-                        Color.Green, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
-                    spriteBatch.End();
 
                     break;
             }

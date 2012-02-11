@@ -23,7 +23,8 @@ namespace Apple01
         SpriteBatch spriteBatch;
         UserControlledSprite player;
         List<Sprite> apples = new List<Sprite>();
-        Sprite bee;
+        BeeSprite bee1, bee2;
+        List<Sprite> lives = new List<Sprite>();
 
         public SpriteManager(Game game) : base(game)
         {
@@ -44,9 +45,21 @@ namespace Apple01
         {
             spriteBatch = new SpriteBatch(Game.GraphicsDevice);
 
-            bee = new BeeSprite(Game.Content.Load<Texture2D>(@"Images/Bee1"),
-                        new Vector2(500, GROUND_LEVEL-30), new Point(24,24), 5, new Point(0,0), 
-                        new Point(3,1), new Vector2(0,0), 1f);
+            // Load Life sprite - Player always starts with 3 lives
+            lives.Add(new HudSprite(Game.Content.Load<Texture2D>(@"Images/Heart"),
+                        new Vector2(20, 30), new Point(101, 171), 0.19f));
+            lives.Add(new HudSprite(Game.Content.Load<Texture2D>(@"Images/Heart"),
+                        new Vector2(40, 30), new Point(101, 171), 0.19f));
+            lives.Add(new HudSprite(Game.Content.Load<Texture2D>(@"Images/Heart"),
+                        new Vector2(60, 30), new Point(101, 171), 0.19f));
+
+            // Load bees sprites
+            bee1 = new BeeSprite(Game.Content.Load<Texture2D>(@"Images/Bee1"),
+                        new Vector2(600, GROUND_LEVEL+5), new Point(24,24), 5, new Point(0,0), 
+                        new Point(3,1), new Vector2(-3,0), 1f);
+            bee2 = new BeeSprite(Game.Content.Load<Texture2D>(@"Images/Bee2"),
+                        new Vector2(900, GROUND_LEVEL + 35), new Point(24, 24), 5, new Point(0, 0),
+                        new Point(3, 1), new Vector2(-2, 0), 1f);
 
             // Load player controlled character
             player = new UserControlledSprite(Game.Content.Load<Texture2D>(@"Images/Idle"),
@@ -69,8 +82,25 @@ namespace Apple01
         public override void Update(GameTime gameTime)
         {
             player.Update(gameTime, Game.Window.ClientBounds);
-            bee.Update(gameTime, Game.Window.ClientBounds);
 
+            // Update bees
+            bee1.Update(gameTime, Game.Window.ClientBounds);
+            bee2.Update(gameTime, Game.Window.ClientBounds);
+
+            // Check for bees' intersection with player
+            if (bee1.collisionRect.Intersects(player.collisionRect) ||
+                bee2.collisionRect.Intersects(player.collisionRect))
+            {
+                player.Reset(new Vector2(0, GROUND_LEVEL));
+                if(lives.Count != 0)
+                    lives.RemoveAt(lives.Count - 1);
+                //if (lives.Count == 0)
+                //    player.IsAlive = false;
+                ((ApplesGame)Game).AddScore(-4);
+
+            }
+
+            // Update apples
             for(int i = 0; i < apples.Count; ++i)
             {
                 Sprite sprite = apples[i];
@@ -81,27 +111,38 @@ namespace Apple01
                 {
                     apples.RemoveAt(i);
                     --i;
+                    ((ApplesGame)Game).AddScore(2);
                     //player.Reset(new Vector2(0, GROUND_LEVEL));
                 }
                 if (sprite.collisionRect.Bottom >= GROUND_LEVEL+78)
                 {
                     sprite.velocity.Y = 0;
                 }
-                if (bee.collisionRect.Intersects(player.collisionRect))
-                    player.Reset(new Vector2(0, GROUND_LEVEL));
 
             }
 
             base.Update(gameTime);
         }
 
+        /// <summary>
+        /// Draw all sprites including player, enemies, apples, etc.. to
+        /// the screen. For each sprite call it's corresponding Draw method.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
 
+            // Draw heart (life) hud
+            foreach (Sprite sprite in lives)
+                sprite.Draw(gameTime, spriteBatch);
+
             // Draw the player
             player.Draw(gameTime, spriteBatch);
-            bee.Draw(gameTime, spriteBatch);
+
+            // Draw the bees
+            bee1.Draw(gameTime, spriteBatch);
+            bee2.Draw(gameTime, spriteBatch);
 
             // Draw the apples
             foreach (Sprite sprite in apples)

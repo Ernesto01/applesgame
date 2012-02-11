@@ -1,4 +1,4 @@
-Content\Fonts\Score.xnb
+Content\Images\Heart.xnb
 Content\Images\Apple.xnb
 Content\Images\Bee1.xnb
 Content\Images\Bee2.xnb
@@ -15,3 +15,4 @@ Content\Images\Layer2_0.xnb
 Content\Images\Layer2_1.xnb
 Content\Images\Layer2_2.xnb
 Content\Images\Run.xnb
+Content\Fonts\Score.xnb
