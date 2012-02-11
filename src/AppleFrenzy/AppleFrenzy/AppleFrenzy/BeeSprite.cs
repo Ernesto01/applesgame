@@ -7,6 +7,8 @@ namespace AppleFrenzy
 {
     class BeeSprite : Sprite
     {
+        private SpriteEffects flip = SpriteEffects.None;
+
         public BeeSprite(Texture2D image, Vector2 position, Point frameSize, int collisionOffset,
             Point currentFrame, Point sheetSize, Vector2 velocity, float size) 
             : base(image, position, frameSize, collisionOffset, currentFrame, sheetSize, 

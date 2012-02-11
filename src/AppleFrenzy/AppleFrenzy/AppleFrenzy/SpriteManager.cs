@@ -45,7 +45,7 @@ namespace Apple01
             spriteBatch = new SpriteBatch(Game.GraphicsDevice);
 
             bee = new BeeSprite(Game.Content.Load<Texture2D>(@"Images/Bee1"),
-                        new Vector2(20, GROUND_LEVEL-70), new Point(24,24), 5, new Point(0,0), 
+                        new Vector2(500, GROUND_LEVEL-30), new Point(24,24), 5, new Point(0,0), 
                         new Point(3,1), new Vector2(0,0), 1f);
 
             // Load player controlled character
@@ -87,6 +87,8 @@ namespace Apple01
                 {
                     sprite.velocity.Y = 0;
                 }
+                if (bee.collisionRect.Intersects(player.collisionRect))
+                    player.Reset(new Vector2(0, GROUND_LEVEL));
 
             }
 

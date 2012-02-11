@@ -18,8 +18,9 @@ namespace Apple01
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
         SpriteManager spriteManager;
+        SpriteFont timerFont;
+        float gameTimer = 30;
 
         enum GameState { Start, InGame, GameOver };
         GameState currentGameState = GameState.Start;
@@ -71,6 +72,7 @@ namespace Apple01
             spriteBatch = new SpriteBatch(GraphicsDevice);
             scoreFont = Content.Load<SpriteFont>(@"fonts\score");
             apple = Content.Load<Texture2D>(@"images\apple");
+            timerFont = Content.Load<SpriteFont>(@"fonts\score");
             
         }
 
@@ -109,6 +111,13 @@ namespace Apple01
                     }
                     break;
                 case GameState.InGame:
+                    gameTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                    if (gameTimer < 0)
+                    {
+                        currentGameState = GameState.GameOver;
+                    }
+
 
                     break;
                 case GameState.GameOver:
@@ -156,11 +165,16 @@ namespace Apple01
                     spriteBatch.Begin();
                     spriteBatch.DrawString(scoreFont, "Score: " + currentScore, new Vector2(10, 10),
                         Color.DarkBlue, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+                    spriteBatch.DrawString(timerFont, "Time Remaining: " + gameTimer.ToString("0.00"), new Vector2(750, 10), Color.Red);
                     spriteBatch.End();
 
                     break;
                     
                 case GameState.GameOver:
+                    spriteBatch.Begin();
+                    spriteBatch.DrawString(scoreFont, "Total Score: " + currentScore, new Vector2(450, 350),
+                        Color.Green, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+                    spriteBatch.End();
 
                     break;
             }
