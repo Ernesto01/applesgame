@@ -20,6 +20,10 @@ namespace Apple01
         SpriteBatch spriteBatch;
         SpriteManager spriteManager;
         SpriteFont timerFont;
+<<<<<<< HEAD
+=======
+        Texture2D TitleScreenBackground;
+>>>>>>> 27b94246bbddcde0205251b20e3e2e71a360b33c
         float gameTimer = 30;
 
         enum GameState { Start, InGame, GameOver };
@@ -72,7 +76,12 @@ namespace Apple01
             spriteBatch = new SpriteBatch(GraphicsDevice);
             scoreFont = Content.Load<SpriteFont>(@"fonts\score");
             apple = Content.Load<Texture2D>(@"images\apple");
+<<<<<<< HEAD
             timerFont = Content.Load<SpriteFont>(@"fonts\score");
+=======
+            timerFont = Content.Load<SpriteFont>(@"fonts\timerFont");
+            TitleScreenBackground = Content.Load<Texture2D>(@"images\FrenzyTitleScreen");
+>>>>>>> 27b94246bbddcde0205251b20e3e2e71a360b33c
             
         }
 
@@ -115,7 +124,11 @@ namespace Apple01
 
                     if (gameTimer < 0)
                     {
+<<<<<<< HEAD
                         currentGameState = GameState.GameOver;
+=======
+                    currentGameState = GameState.GameOver;
+>>>>>>> 27b94246bbddcde0205251b20e3e2e71a360b33c
                     }
 
 
@@ -139,13 +152,11 @@ namespace Apple01
             switch (currentGameState)
             {
                 case GameState.Start:
-                    GraphicsDevice.Clear(Color.AliceBlue);
+                    GraphicsDevice.Clear(Color.White);
 
                     // Draw Text for intro splash screen
                     spriteBatch.Begin();
-                    spriteBatch.Draw(apple,
-                        applePos,
-                        Color.White);
+                    spriteBatch.Draw(apple, applePos, Color.White);
 
                     string text = "Catch as many apples as you can before timer runs out";
                     spriteBatch.DrawString(scoreFont, text, new Vector2((Window.ClientBounds.Width / 2)
@@ -156,6 +167,7 @@ namespace Apple01
                     spriteBatch.DrawString(scoreFont, text, new Vector2((Window.ClientBounds.Width / 2)
                         - (scoreFont.MeasureString(text).X / 2), (Window.ClientBounds.Height / 2)
                         - (scoreFont.MeasureString(text).Y / 2) + 30), Color.SaddleBrown);
+                    spriteBatch.Draw(TitleScreenBackground, new Vector2(225, 150), Color.White);
 
                     spriteBatch.End();
                     break;
