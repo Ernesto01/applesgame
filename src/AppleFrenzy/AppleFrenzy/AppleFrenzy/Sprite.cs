@@ -15,7 +15,7 @@ namespace Apple01
         protected float size;
 
         /* Properties */
-        public bool IsAlive { get; protected set; }
+        public bool IsAlive { get; set; }
 
         public abstract Vector2 direction
         {

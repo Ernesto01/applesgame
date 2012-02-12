@@ -78,10 +78,8 @@ namespace Apple01
                         new Vector2(6, 6), 1f);
             player.Initialize(Game.Services);
 
-            // Load apples
-            for(int i = 0; i < 10; ++i)
-                apples.Add(new AppleSprite(Game.Content.Load<Texture2D>(@"Images\Apple"), 
-                    new Point(28, 32), 5, new Vector2(0, 2), Game.Window.ClientBounds, 0.60f));
+            // Load Apples
+            loadApples();
 
 
             // Load Sound Effects
@@ -89,6 +87,17 @@ namespace Apple01
             appleCollected = Game.Content.Load<SoundEffect>(@"Sounds\AppleCollected");
 
             base.LoadContent();
+        }
+
+        /// <summary>
+        /// Loads apples when starting a game and when
+        /// there are only two remaining apples on the screen
+        /// </summary>
+        private void loadApples()
+        {
+            for (int i = 0; i < 10; ++i)
+                apples.Add(new AppleSprite(Game.Content.Load<Texture2D>(@"Images\Apple"),
+                    new Point(28, 32), 5, new Vector2(0, 2), Game.Window.ClientBounds, 0.60f));
         }
 
         /// <summary>
@@ -114,8 +123,8 @@ namespace Apple01
                 player.Reset(new Vector2(0, GROUND_LEVEL));
                 if(lives.Count != 0)
                     lives.RemoveAt(lives.Count - 1);
-                //if (lives.Count == 0)
-                //    player.IsAlive = false;
+                if (lives.Count == 0)
+                    player.IsAlive = false;
                 ((ApplesGame)Game).AddScore(-4);
 
             }
@@ -133,6 +142,9 @@ namespace Apple01
                     --i;
                     ((ApplesGame)Game).AddScore(2);
                     appleCollected.Play();
+
+                    if (apples.Count <= 2)
+                        loadApples();
                 }
                 if (sprite.collisionRect.Bottom >= GROUND_LEVEL+78)
                 {
@@ -140,6 +152,9 @@ namespace Apple01
                 }
 
             }
+
+            if (!player.IsAlive)
+                ((ApplesGame)Game).gameTimer = 0;
 
             base.Update(gameTime);
         }

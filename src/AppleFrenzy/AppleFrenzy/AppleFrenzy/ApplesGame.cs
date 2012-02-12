@@ -30,9 +30,10 @@ namespace Apple01
 
         BackgroundSprite layer0, layer1, layer2;
 
+        // Timer and Title Background
         SpriteFont timerFont;
         Texture2D TitleScreenBackground;
-        float gameTimer = 30;
+        public float gameTimer = 45;
 
         // Apple stuff
         AppleSprite fallingApple;
@@ -136,14 +137,14 @@ namespace Apple01
                 case GameState.InGame:
                     // Handle timer
                     gameTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    if (gameTimer < 0)
-                    {
+                    if (gameTimer <= 0)
                         currentGameState = GameState.GameOver;
-                    }
+                    
 
                     break;
                 case GameState.GameOver:
-
+                    spriteManager.Enabled = false;
+                    spriteManager.Visible = false;
                     break;
             }
 
@@ -192,15 +193,22 @@ namespace Apple01
                     // Draw the score
                     spriteBatch.DrawString(scoreFont, "Score: " + currentScore, new Vector2(10, 10),
                         Color.DarkBlue, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
-                    spriteBatch.DrawString(timerFont, "Time Remaining: " + gameTimer.ToString("0.00"),
-                                        new Vector2(870, 10), Color.Red);
+                    spriteBatch.DrawString(timerFont, "Time: " + gameTimer.ToString("0.00"),
+                                        new Vector2(985, 10), Color.Red);
 
                     spriteBatch.End();
 
                     break;
                     
                 case GameState.GameOver:
+                    GraphicsDevice.Clear(Color.AliceBlue);
+                    // Draw Score at End Screen
+                    spriteBatch.Begin();
+                    spriteBatch.DrawString(scoreFont, "Score: " + currentScore, 
+                        new Vector2(Window.ClientBounds.Width/2 - 50, Window.ClientBounds.Height/2 - 50),
+                        Color.DarkBlue, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
 
+                    spriteBatch.End();
                     break;
             }
 
