@@ -155,6 +155,24 @@
       <Time>2010-09-27T11:53:12-07:00</Time>
     </Item>
     <Item>
+      <Source>Images\Bird5.png</Source>
+      <Name>Images\Bird5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bird5.xnb</Output>
+      <Time>2012-02-11T14:08:38-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Rock.png</Source>
+      <Name>Images\Rock</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Rock.xnb</Output>
+      <Time>2007-05-12T17:44:34-07:00</Time>
+    </Item>
+    <Item>
       <Source>Fonts\Score.spritefont</Source>
       <Name>Fonts\Score</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -163,10 +181,64 @@
       <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Fonts\Score.xnb</Output>
       <Time>2012-01-30T00:03:22-08:00</Time>
     </Item>
+    <Item>
+      <Source>Sounds\Background.wav</Source>
+      <Name>Sounds\Background</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\Background.xnb</Output>
+      <Time>2009-05-21T17:11:42-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Bird.wav</Source>
+      <Name>Sounds\Bird</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\Bird.xnb</Output>
+      <Time>2009-05-21T17:11:40-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Hit.wav</Source>
+      <Name>Sounds\Hit</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\Hit.xnb</Output>
+      <Time>2009-05-21T17:11:38-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Hit2.wav</Source>
+      <Name>Sounds\Hit2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\Hit2.xnb</Output>
+      <Time>2009-05-21T17:11:38-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Hit3.wma</Source>
+      <Name>Sounds\Hit3</Name>
+      <Importer>WmaImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\Hit3.xnb</Output>
+      <Time>2010-09-27T11:53:12-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\AppleCollected.wma</Source>
+      <Name>Sounds\AppleCollected</Name>
+      <Importer>WmaImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\AppleCollected.xnb</Output>
+      <Time>2010-09-27T11:53:12-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
-      <TargetProfile>HiDef</TargetProfile>
+      <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
       <RootDirectory>C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzyContent\</RootDirectory>

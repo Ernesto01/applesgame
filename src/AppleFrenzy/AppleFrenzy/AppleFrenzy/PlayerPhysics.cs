@@ -20,7 +20,7 @@ namespace AppleFrenzy
         private const float MaxFallSpeed = 550f;
         private const float JumpControlPower = 0.14f;
 
-        const int GROUND_LEVEL = 500;
+        const int GROUND_LEVEL = 580;
 
         public bool OnGround { get; private set; }
 

@@ -11,7 +11,7 @@ namespace Apple01
         
         // AppleSprite Constructor
         public AppleSprite(Texture2D image, Point frameSize, int collisionOffset, Vector2 speed, Rectangle clientBounds, float size) :
-            base(image, new Vector2(getRandom(clientBounds.Width-15), getRandom(90)), frameSize, collisionOffset, new Point(0, 0),
+            base(image, new Vector2(getRandom(clientBounds.Width-15), getRandom(120)), frameSize, collisionOffset, new Point(0, 0),
                 new Point(1, 1), speed, size) { }
 
         public AppleSprite(Texture2D image, Vector2 position, Point frameSize, int collisionOffset, Vector2 speed, Rectangle clientBounds, float size) :

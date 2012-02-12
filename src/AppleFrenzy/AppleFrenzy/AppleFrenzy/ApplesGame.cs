@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using AppleFrenzy;
 
 namespace Apple01
 {
@@ -16,28 +17,25 @@ namespace Apple01
     /// </summary>
     public class ApplesGame : Microsoft.Xna.Framework.Game
     {
-        // Graphics device allows us to talk to the GPU and draw
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        // Manage Sprites
         SpriteManager spriteManager;
 
-        // Game States
         enum GameState { Start, InGame, GameOver };
         GameState currentGameState = GameState.Start;
 
-        // Score and score font
-        int currentScore = 0;
-        SpriteFont scoreFont;
+        public int currentScore = 0;
+        public SpriteFont scoreFont;
 
-        // Apple stuff
-        AppleSprite fallingApple;
+        BackgroundSprite layer0, layer1, layer2;
 
-        // Timer and title screen background
         SpriteFont timerFont;
         Texture2D TitleScreenBackground;
         float gameTimer = 30;
+
+        // Apple stuff
+        AppleSprite fallingApple;
 
         public ApplesGame()
         {
@@ -81,9 +79,21 @@ namespace Apple01
             spriteBatch = new SpriteBatch(GraphicsDevice);
             scoreFont = Content.Load<SpriteFont>(@"fonts\score");
            
+            // Load Initial screen apple
             fallingApple = new AppleSprite(Content.Load<Texture2D>(@"images\apple"), new Vector2(180, 180),
                             new Point(28, 32), 0, new Vector2(0, 2), Window.ClientBounds, 1f);
+
+            // Load Background: 
+            layer0 = new BackgroundSprite(Content.Load<Texture2D>(@"Images\Layer0_0"),
+                    new Point(800, 480), 1.418f);
+            layer1 = new BackgroundSprite(Content.Load<Texture2D>(@"Images\Layer1_0"),
+                    new Point(800, 480), 1.418f, 0.9f);
+            layer2 = new BackgroundSprite(Content.Load<Texture2D>(@"Images\Layer2_0"),
+                    new Point(800, 480), 1.418f, 0.8f);
+
+            // Load Timer
             timerFont = Content.Load<SpriteFont>(@"fonts\score");
+            // Load Title Screen Background
             //TitleScreenBackground = Content.Load<Texture2D>(@"images\FrenzyTitleScreen");
             
         }
@@ -131,7 +141,6 @@ namespace Apple01
                         currentGameState = GameState.GameOver;
                     }
 
-
                     break;
                 case GameState.GameOver:
 
@@ -168,7 +177,6 @@ namespace Apple01
                     spriteBatch.DrawString(scoreFont, text, new Vector2((Window.ClientBounds.Width / 2)
                         - (scoreFont.MeasureString(text).X / 2), (Window.ClientBounds.Height / 2)
                         - (scoreFont.MeasureString(text).Y / 2) + 30), Color.SaddleBrown);
-                    //spriteBatch.Draw(TitleScreenBackground, new Vector2(225, 150), Color.White);
 
                     spriteBatch.End();
                     break;
@@ -176,10 +184,17 @@ namespace Apple01
                 case GameState.InGame:
                     GraphicsDevice.Clear(Color.White);
                     spriteBatch.Begin();
+
+                    // Draw Background: SpriteManager draws OVER this class, so need to draw BG here
+                    layer0.Draw(gameTime, spriteBatch);
+                    layer1.Draw(gameTime, spriteBatch);
+                    //layer2.Draw(gameTime, spriteBatch);
+                    // Draw the score
                     spriteBatch.DrawString(scoreFont, "Score: " + currentScore, new Vector2(10, 10),
-                                        Color.DarkBlue, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
-                    spriteBatch.DrawString(timerFont, "Time Remaining: " + gameTimer.ToString("0.00"), 
+                        Color.DarkBlue, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
+                    spriteBatch.DrawString(timerFont, "Time Remaining: " + gameTimer.ToString("0.00"),
                                         new Vector2(870, 10), Color.Red);
+
                     spriteBatch.End();
 
                     break;

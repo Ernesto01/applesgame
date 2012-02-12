@@ -18,17 +18,21 @@ namespace Apple01
     /// </summary>
     public class SpriteManager : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        public const int GROUND_LEVEL = 500;
+        public const int GROUND_LEVEL = 580;
 
         SpriteBatch spriteBatch;
         UserControlledSprite player;
         List<Sprite> apples = new List<Sprite>();
         BeeSprite bee1, bee2;
         List<Sprite> lives = new List<Sprite>();
+        BirdSprite bird;
+        SoundEffect beeHit;
+        SoundEffect appleCollected;
+        
 
         public SpriteManager(Game game) : base(game)
         {
-            
+            this.DrawOrder = 4;
         }
 
         /// <summary>
@@ -43,6 +47,8 @@ namespace Apple01
 
         protected override void LoadContent()
         {
+        
+            // Initialize spriteBatch object to correct GPU
             spriteBatch = new SpriteBatch(Game.GraphicsDevice);
 
             // Load Life sprite - Player always starts with 3 lives
@@ -61,16 +67,26 @@ namespace Apple01
                         new Vector2(900, GROUND_LEVEL + 35), new Point(24, 24), 5, new Point(0, 0),
                         new Point(3, 1), new Vector2(-2, 0), 1f);
 
+            // Load bird sprite
+            bird = new BirdSprite(Game.Content.Load<Texture2D>(@"Images/Bird5"),
+                        new Vector2(500, 500), new Point(47, 44), 5, new Point(0, 0),
+                        new Point(9, 1), new Vector2(0, 0), 1.17f);
+
             // Load player controlled character
             player = new UserControlledSprite(Game.Content.Load<Texture2D>(@"Images/Idle"),
                         new Vector2(0,GROUND_LEVEL), new Point(64, 64), 10, new Point(0, 0), new Point(1, 1),
                         new Vector2(6, 6), 1f);
             player.Initialize(Game.Services);
 
-            // Load game controlled sprites
+            // Load apples
             for(int i = 0; i < 10; ++i)
                 apples.Add(new AppleSprite(Game.Content.Load<Texture2D>(@"Images\Apple"), 
                     new Point(28, 32), 5, new Vector2(0, 2), Game.Window.ClientBounds, 0.60f));
+
+
+            // Load Sound Effects
+            beeHit = Game.Content.Load<SoundEffect>(@"Sounds\Hit3");
+            appleCollected = Game.Content.Load<SoundEffect>(@"Sounds\AppleCollected");
 
             base.LoadContent();
         }
@@ -87,10 +103,14 @@ namespace Apple01
             bee1.Update(gameTime, Game.Window.ClientBounds);
             bee2.Update(gameTime, Game.Window.ClientBounds);
 
+            // update birds
+            bird.Update(gameTime, Game.Window.ClientBounds);
+
             // Check for bees' intersection with player
             if (bee1.collisionRect.Intersects(player.collisionRect) ||
                 bee2.collisionRect.Intersects(player.collisionRect))
             {
+                beeHit.Play();
                 player.Reset(new Vector2(0, GROUND_LEVEL));
                 if(lives.Count != 0)
                     lives.RemoveAt(lives.Count - 1);
@@ -112,7 +132,7 @@ namespace Apple01
                     apples.RemoveAt(i);
                     --i;
                     ((ApplesGame)Game).AddScore(2);
-                    //player.Reset(new Vector2(0, GROUND_LEVEL));
+                    appleCollected.Play();
                 }
                 if (sprite.collisionRect.Bottom >= GROUND_LEVEL+78)
                 {
@@ -131,7 +151,7 @@ namespace Apple01
         /// <param name="gameTime"></param>
         public override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
 
             // Draw heart (life) hud
             foreach (Sprite sprite in lives)
@@ -140,6 +160,9 @@ namespace Apple01
             // Draw the player
             player.Draw(gameTime, spriteBatch);
 
+            // Draw bird
+            bird.Draw(gameTime, spriteBatch);
+
             // Draw the bees
             bee1.Draw(gameTime, spriteBatch);
             bee2.Draw(gameTime, spriteBatch);
@@ -147,6 +170,9 @@ namespace Apple01
             // Draw the apples
             foreach (Sprite sprite in apples)
                 sprite.Draw(gameTime, spriteBatch);
+
+            //spriteBatch.DrawString(((ApplesGame)Game).scoreFont, "Score: " + ((ApplesGame)Game).currentScore, new Vector2(10, 10),
+            //            Color.DarkBlue, 0, Vector2.Zero, 1, SpriteEffects.None, 0.5f);
 
             spriteBatch.End();
             

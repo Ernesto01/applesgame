@@ -15,4 +15,12 @@ Content\Images\Layer2_0.xnb
 Content\Images\Layer2_1.xnb
 Content\Images\Layer2_2.xnb
 Content\Images\Run.xnb
+Content\Images\Bird5.xnb
+Content\Images\Rock.xnb
 Content\Fonts\Score.xnb
+Content\Sounds\Background.xnb
+Content\Sounds\Bird.xnb
+Content\Sounds\Hit.xnb
+Content\Sounds\Hit2.xnb
+Content\Sounds\Hit3.xnb
+Content\Sounds\AppleCollected.xnb
