@@ -32,12 +32,17 @@ namespace Apple01
 
         // Timer and Title Background
         SpriteFont timerFont;
-        Texture2D TitleScreenBackground;
+        Texture2D TitleScreenLogo;
         public float gameTimer = 45;
+
+        //Song (.mp3) file
+        SoundEffect FrenzyAudio;
+        SoundEffectInstance frenzyAudioInstance;
 
         // Apple stuff
         AppleSprite fallingApple;
 
+        
         public ApplesGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -83,6 +88,8 @@ namespace Apple01
             // Load Initial screen apple
             fallingApple = new AppleSprite(Content.Load<Texture2D>(@"images\apple"), new Vector2(180, 180),
                             new Point(28, 32), 0, new Vector2(0, 2), Window.ClientBounds, 1f);
+            // Load Title Screen Background
+            TitleScreenLogo = Content.Load<Texture2D>(@"Images\FrenzyTitleScreen");
 
             // Load Background: 
             layer0 = new BackgroundSprite(Content.Load<Texture2D>(@"Images\Layer0_0"),
@@ -94,9 +101,11 @@ namespace Apple01
 
             // Load Timer
             timerFont = Content.Load<SpriteFont>(@"fonts\score");
-            // Load Title Screen Background
-            //TitleScreenBackground = Content.Load<Texture2D>(@"images\FrenzyTitleScreen");
-            
+
+            //Load Song
+            FrenzyAudio = Content.Load<SoundEffect>(@"Sounds\AppleAudio");
+            frenzyAudioInstance = FrenzyAudio.CreateInstance();
+            frenzyAudioInstance.IsLooped = true;
         }
 
         /// <summary>
@@ -137,12 +146,24 @@ namespace Apple01
                 case GameState.InGame:
                     // Handle timer
                     gameTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                    // Plays background music 
+                    frenzyAudioInstance.Play();
+                    
+
                     if (gameTimer <= 0)
+                    {
                         currentGameState = GameState.GameOver;
+                        //MediaPlayer.IsRepeating = false;
+                        
+                    }
                     
 
                     break;
                 case GameState.GameOver:
+                    // Stop background music 
+                    frenzyAudioInstance.Stop();
+                    // Disable SpriteManager 
                     spriteManager.Enabled = false;
                     spriteManager.Visible = false;
                     break;
@@ -162,14 +183,16 @@ namespace Apple01
             switch (currentGameState)
             {
                 case GameState.Start:
-                    GraphicsDevice.Clear(Color.AliceBlue);
+                    GraphicsDevice.Clear(Color.White);
 
                     // Draw Text for intro splash screen
                     spriteBatch.Begin();
 
                     fallingApple.Draw(gameTime, spriteBatch);
 
-                    string text = "Catch as many apples as you can before timer runs out";
+                    spriteBatch.Draw(TitleScreenLogo, new Vector2(225, 150), Color.White);
+
+                    string text = "Catch as many apples as you can before timer runs out!";
                     spriteBatch.DrawString(scoreFont, text, new Vector2((Window.ClientBounds.Width / 2)
                         - (scoreFont.MeasureString(text).X / 2),
                         (Window.ClientBounds.Height / 2) - (scoreFont.MeasureString(text).Y / 2)),
