@@ -35,6 +35,8 @@ namespace Apple01
         Texture2D TitleScreenLogo;
         public float gameTimer = 45;
 
+        //Song (.mp3) file
+        Song FrenzyAudio;
 
         // Apple stuff
         AppleSprite fallingApple;
@@ -98,7 +100,9 @@ namespace Apple01
 
             // Load Timer
             timerFont = Content.Load<SpriteFont>(@"fonts\score");
-            
+
+            //Load Song
+            FrenzyAudio = Content.Load<Song>(@"sounds\AppleAudio");           
             
         }
 
@@ -140,8 +144,16 @@ namespace Apple01
                 case GameState.InGame:
                     // Handle timer
                     gameTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                    // Initializes .mp3 to loop
+                    MediaPlayer.Play(FrenzyAudio);
+                    MediaPlayer.IsRepeating = true;
+
                     if (gameTimer <= 0)
+                    {
                         currentGameState = GameState.GameOver;
+                        MediaPlayer.IsRepeating = false;
+                    }
                     
 
                     break;
