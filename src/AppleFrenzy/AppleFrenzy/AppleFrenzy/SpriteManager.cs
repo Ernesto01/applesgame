@@ -32,7 +32,7 @@ namespace Apple01
 
         public SpriteManager(Game game) : base(game)
         {
-            this.DrawOrder = 4;
+         
         }
 
         /// <summary>
@@ -43,6 +43,19 @@ namespace Apple01
         {
 
             base.Initialize();
+        }
+
+        /// <summary>
+        /// Reset game state to initial state
+        /// </summary>
+        public void Reset()
+        {   // This is a point of performance optimization by NOT allocating new memory
+            // when resetting, if you think about porting to WP, change this, you will need
+            // to add initialization routines to several sprite ADTs. Memory operations are 
+            // more expensive than CPU operations. 
+            apples = new List<Sprite>();
+            lives = new List<Sprite>();
+            LoadContent();
         }
 
         protected override void LoadContent()
