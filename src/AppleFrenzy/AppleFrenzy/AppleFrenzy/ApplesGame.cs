@@ -172,9 +172,9 @@ namespace Apple01
 
                     fallingApple.Draw(gameTime, spriteBatch);
 
-                    spriteBatch.Draw(TitleScreenLogo, new Vector2(200, 200), Color.White);
+                    spriteBatch.Draw(TitleScreenLogo, new Vector2(225, 150), Color.White);
 
-                    string text = "Catch as many apples as you can before timer runs out";
+                    string text = "Catch as many apples as you can before timer runs out!";
                     spriteBatch.DrawString(scoreFont, text, new Vector2((Window.ClientBounds.Width / 2)
                         - (scoreFont.MeasureString(text).X / 2),
                         (Window.ClientBounds.Height / 2) - (scoreFont.MeasureString(text).Y / 2)),
