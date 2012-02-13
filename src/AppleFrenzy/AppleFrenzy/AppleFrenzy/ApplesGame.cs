@@ -36,8 +36,12 @@ namespace Apple01
         public float gameTimer = 45;
 
         //Song (.mp3) file
+<<<<<<< HEAD
         SoundEffect FrenzyAudio;
         SoundEffectInstance frenzyAudioInstance;
+=======
+        Song FrenzyAudio;
+>>>>>>> 108eb8f5b6f0fa07bc4caf1c8ffbc7bf4545f19b
 
         // Apple stuff
         AppleSprite fallingApple;
@@ -89,7 +93,11 @@ namespace Apple01
             fallingApple = new AppleSprite(Content.Load<Texture2D>(@"images\apple"), new Vector2(180, 180),
                             new Point(28, 32), 0, new Vector2(0, 2), Window.ClientBounds, 1f);
             // Load Title Screen Background
+<<<<<<< HEAD
             TitleScreenLogo = Content.Load<Texture2D>(@"Images\FrenzyTitleScreen");
+=======
+            TitleScreenLogo = Content.Load<Texture2D>(@"images\FrenzyTitleScreen");
+>>>>>>> 108eb8f5b6f0fa07bc4caf1c8ffbc7bf4545f19b
 
             // Load Background: 
             layer0 = new BackgroundSprite(Content.Load<Texture2D>(@"Images\Layer0_0"),
@@ -103,9 +111,14 @@ namespace Apple01
             timerFont = Content.Load<SpriteFont>(@"fonts\score");
 
             //Load Song
+<<<<<<< HEAD
             FrenzyAudio = Content.Load<SoundEffect>(@"Sounds\AppleAudio");
             frenzyAudioInstance = FrenzyAudio.CreateInstance();
             frenzyAudioInstance.IsLooped = true;
+=======
+            FrenzyAudio = Content.Load<Song>(@"sounds\AppleAudio");           
+            
+>>>>>>> 108eb8f5b6f0fa07bc4caf1c8ffbc7bf4545f19b
         }
 
         /// <summary>
@@ -147,15 +160,25 @@ namespace Apple01
                     // Handle timer
                     gameTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+<<<<<<< HEAD
                     // Plays background music 
                     frenzyAudioInstance.Play();
                     
+=======
+                    // Initializes .mp3 to loop
+                    MediaPlayer.Play(FrenzyAudio);
+                    MediaPlayer.IsRepeating = true;
+>>>>>>> 108eb8f5b6f0fa07bc4caf1c8ffbc7bf4545f19b
 
                     if (gameTimer <= 0)
                     {
                         currentGameState = GameState.GameOver;
+<<<<<<< HEAD
                         //MediaPlayer.IsRepeating = false;
                         
+=======
+                        MediaPlayer.IsRepeating = false;
+>>>>>>> 108eb8f5b6f0fa07bc4caf1c8ffbc7bf4545f19b
                     }
                     
 
