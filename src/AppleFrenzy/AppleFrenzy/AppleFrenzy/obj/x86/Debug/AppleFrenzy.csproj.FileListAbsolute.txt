@@ -130,3 +130,4 @@ C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\
 C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\AppleFrenzy.exe
 C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\AppleFrenzy.pdb
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\AppleAudioI.xnb
