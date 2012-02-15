@@ -60,6 +60,12 @@ namespace Apple01
         // Initialize will be used to initialize any class variables and states
         public virtual void Initialize(IServiceProvider serviceProvider) { }
 
+        // Set vertical velocity to zero
+        public void stopVerticalMovement()
+        {
+            velocity.Y = 0;
+        }
+
         // Update method will iterate through sprites in spritesheet to do animation
         // and move between sprites given a set framerate
         public virtual void Update(GameTime gameTime, Rectangle clientBounds)

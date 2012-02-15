@@ -19,8 +19,9 @@ namespace Apple01
     public class SpriteManager : Microsoft.Xna.Framework.DrawableGameComponent
     {
         public const int GROUND_LEVEL = 580;
-
+        // System provided variable for drawing to GPU
         SpriteBatch spriteBatch;
+        // Sprites
         UserControlledSprite player;
         List<Sprite> apples = new List<Sprite>();
         BeeSprite bee1, bee2;
@@ -28,6 +29,7 @@ namespace Apple01
         BirdSprite bird;
         SoundEffect beeHit;
         SoundEffect appleCollected;
+        SoundEffect deadBird;
         
 
         public SpriteManager(Game game) : base(game)
@@ -49,7 +51,7 @@ namespace Apple01
         /// Reset game state to initial state
         /// </summary>
         public void Reset()
-        {   // This is a point of performance optimization by NOT allocating new memory
+        {   // This is a point of possible performance optimization by NOT allocating new memory
             // when resetting, if you think about porting to WP, change this, you will need
             // to add initialization routines to several sprite ADTs. Memory operations are 
             // more expensive than CPU operations. 
@@ -82,7 +84,7 @@ namespace Apple01
 
             // Load bird sprite
             bird = new BirdSprite(Game.Content.Load<Texture2D>(@"Images/Bird5"),
-                        new Vector2(500, 500), new Point(47, 44), 5, new Point(0, 0),
+                        new Vector2(500, 530), new Point(47, 44), 5, new Point(0, 0),
                         new Point(9, 1), new Vector2(0, 0), 1.17f);
 
             // Load player controlled character
@@ -98,6 +100,7 @@ namespace Apple01
             // Load Sound Effects
             beeHit = Game.Content.Load<SoundEffect>(@"Sounds\Hit3");
             appleCollected = Game.Content.Load<SoundEffect>(@"Sounds\AppleCollected");
+            deadBird = Game.Content.Load<SoundEffect>(@"Sounds\Bird03");
 
             base.LoadContent();
         }
@@ -113,6 +116,43 @@ namespace Apple01
                     new Point(28, 32), 5, new Vector2(0, 2), Game.Window.ClientBounds, 0.60f));
         }
 
+        // Check for apple collisions
+        void AppleCollision(Sprite sprite, ref int i)
+        {
+            // Check for collisions
+            if (sprite.collisionRect.Intersects(player.collisionRect))
+            { 
+                if (sprite.collisionRect.Bottom < GROUND_LEVEL + 65)
+                    ((ApplesGame)Game).AddScore(4);
+                else
+                    ((ApplesGame)Game).AddScore(2);
+
+                // Play Apple Collected Sound
+                appleCollected.Play();
+
+                // Remove apple from apples list
+                apples.RemoveAt(i);
+                --i;
+
+                // Check to see if we need to drop more apples
+                if (apples.Count <= 2)
+                    loadApples();
+            }
+            if (sprite.collisionRect.Bottom >= GROUND_LEVEL + 78)
+                sprite.stopVerticalMovement();
+            
+        }
+
+        void onPlayerHit()
+        {
+            player.Reset(new Vector2(0, GROUND_LEVEL));
+            if (lives.Count != 0)
+                lives.RemoveAt(lives.Count - 1);
+            if (lives.Count == 0)
+                player.IsAlive = false;
+            ((ApplesGame)Game).AddScore(-4);
+        }
+
         /// <summary>
         /// Allows the game component to update itself.
         /// </summary>
@@ -126,7 +166,26 @@ namespace Apple01
             bee2.Update(gameTime, Game.Window.ClientBounds);
 
             // update birds
-            bird.Update(gameTime, Game.Window.ClientBounds);
+            if (bird.IsAlive)
+            {
+                bird.Update(gameTime, Game.Window.ClientBounds);
+
+                // Check for bird collision detection
+                if (bird.collisionRect.Intersects(player.collisionRect))
+                {
+                    if (Math.Abs(player.collisionRect.Bottom - bird.collisionRect.Top) <= 3f)
+                    {
+                        bird.IsAlive = false;
+                        deadBird.Play();
+                        ((ApplesGame)Game).AddScore(8);
+                    }
+                    else
+                    {
+                        onPlayerHit();
+                    }
+                }
+
+            }
 
             // Check for bees' intersection with player
             if (bee1.collisionRect.Intersects(player.collisionRect) ||
@@ -148,24 +207,12 @@ namespace Apple01
                 Sprite sprite = apples[i];
                 sprite.Update(gameTime, Game.Window.ClientBounds);
 
-                // Check for collisions
-                if (sprite.collisionRect.Intersects(player.collisionRect))
-                {
-                    apples.RemoveAt(i);
-                    --i;
-                    ((ApplesGame)Game).AddScore(2);
-                    appleCollected.Play();
-
-                    if (apples.Count <= 2)
-                        loadApples();
-                }
-                if (sprite.collisionRect.Bottom >= GROUND_LEVEL+78)
-                {
-                    sprite.velocity.Y = 0;
-                }
-
+                // Check for collisions and update appropriately
+                AppleCollision(sprite, ref i);
             }
 
+
+            // Check if player is dead and end game if so
             if (!player.IsAlive)
                 ((ApplesGame)Game).gameTimer = 0;
 
@@ -189,7 +236,8 @@ namespace Apple01
             player.Draw(gameTime, spriteBatch);
 
             // Draw bird
-            bird.Draw(gameTime, spriteBatch);
+            if(bird.IsAlive)
+                bird.Draw(gameTime, spriteBatch);
 
             // Draw the bees
             bee1.Draw(gameTime, spriteBatch);
@@ -198,9 +246,6 @@ namespace Apple01
             // Draw the apples
             foreach (Sprite sprite in apples)
                 sprite.Draw(gameTime, spriteBatch);
-
-            //spriteBatch.DrawString(((ApplesGame)Game).scoreFont, "Score: " + ((ApplesGame)Game).currentScore, new Vector2(10, 10),
-            //            Color.DarkBlue, 0, Vector2.Zero, 1, SpriteEffects.None, 0.5f);
 
             spriteBatch.End();
             

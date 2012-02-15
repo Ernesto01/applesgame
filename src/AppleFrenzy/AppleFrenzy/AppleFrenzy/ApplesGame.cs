@@ -135,8 +135,8 @@ namespace Apple01
             // Load Title Screen Background
             TitleScreenLogo = Content.Load<Texture2D>(@"images\FrenzyTitleScreen");
 
-            //Load Song            
-            FrenzyAudio = Content.Load<SoundEffect>(@"Sounds\AppleAudioI");            
+            //Load Sound Effect           
+            FrenzyAudio = Content.Load<SoundEffect>(@"Sounds\Background");            
             frenzyAudioInstance = FrenzyAudio.CreateInstance();            
             frenzyAudioInstance.IsLooped = true;  
             

@@ -96,38 +96,4 @@ C:\Users\camilo\Desktop\Spring 2012\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\
 C:\Users\camilo\Desktop\Spring 2012\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\AppleFrenzy.pdb
 C:\Users\camilo\Desktop\Spring 2012\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\FrenzyTitleScreen.xnb
 C:\Users\camilo\Desktop\Spring 2012\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\AppleAudio.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Heart.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Apple.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee1.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bee2.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Die.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Idle.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Jump.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_0.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_1.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer0_2.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_0.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_1.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer1_2.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_0.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_1.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Layer2_2.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Run.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Bird5.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\Rock.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Images\FrenzyTitleScreen.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Fonts\Score.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\Background.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\Bird.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\Hit.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\Hit2.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\Hit3.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\AppleCollected.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\AppleAudio.xnb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\AppleFrenzy.exe
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\AppleFrenzy.pdb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\AppleFrenzy.exe
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Debug\AppleFrenzy.pdb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\AppleAudioI.xnb
+C:\Users\camilo\Desktop\Spring 2012\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Debug\Content\Sounds\AppleAudioI.xnb

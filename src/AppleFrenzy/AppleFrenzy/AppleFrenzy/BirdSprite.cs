@@ -14,7 +14,7 @@ namespace AppleFrenzy
             : base(image, position, frameSize, collisionOffset, currentFrame, sheetSize, 
                 velocity, size) 
         {
-            
+            IsAlive = true;
         }
 
         public override Vector2 direction

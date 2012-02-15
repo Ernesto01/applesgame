@@ -1,0 +1,2 @@
+C:\Users\camilo\Desktop\Spring 2012\AppleFrenzy\AppleFrenzy\AppleFrenzyContent\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzyContent\obj\x86\Release\ResolveAssemblyReference.cache
