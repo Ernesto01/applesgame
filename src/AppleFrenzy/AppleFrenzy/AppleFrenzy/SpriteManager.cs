@@ -85,7 +85,7 @@ namespace Apple01
             // Load bird sprite
             bird = new BirdSprite(Game.Content.Load<Texture2D>(@"Images/Bird5"),
                         new Vector2(500, 530), new Point(47, 44), 5, new Point(0, 0),
-                        new Point(9, 1), new Vector2(0, 0), 1.17f);
+                        new Point(9, 1), new Vector2(-2, 0), 1.17f);
 
             // Load player controlled character
             player = new UserControlledSprite(Game.Content.Load<Texture2D>(@"Images/Idle"),
@@ -145,6 +145,7 @@ namespace Apple01
 
         void onPlayerHit()
         {
+            beeHit.Play();
             player.Reset(new Vector2(0, GROUND_LEVEL));
             if (lives.Count != 0)
                 lives.RemoveAt(lives.Count - 1);
@@ -173,11 +174,11 @@ namespace Apple01
                 // Check for bird collision detection
                 if (bird.collisionRect.Intersects(player.collisionRect))
                 {
-                    if (Math.Abs(player.collisionRect.Bottom - bird.collisionRect.Top) <= 3f)
+                    if (Math.Abs(player.collisionRect.Bottom - bird.collisionRect.Top) <= 4.8f)
                     {
                         bird.IsAlive = false;
                         deadBird.Play();
-                        ((ApplesGame)Game).AddScore(8);
+                        ((ApplesGame)Game).AddScore(10);
                     }
                     else
                     {
@@ -191,13 +192,7 @@ namespace Apple01
             if (bee1.collisionRect.Intersects(player.collisionRect) ||
                 bee2.collisionRect.Intersects(player.collisionRect))
             {
-                beeHit.Play();
-                player.Reset(new Vector2(0, GROUND_LEVEL));
-                if(lives.Count != 0)
-                    lives.RemoveAt(lives.Count - 1);
-                if (lives.Count == 0)
-                    player.IsAlive = false;
-                ((ApplesGame)Game).AddScore(-4);
+                onPlayerHit();
 
             }
 

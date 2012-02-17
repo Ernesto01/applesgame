@@ -17,12 +17,14 @@ namespace Apple01
     /// </summary>
     public class ApplesGame : Microsoft.Xna.Framework.Game
     {
+        // XNA system variables for connecting to GPU and drawing textures to GPU
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        // Game Component for handling sprites
         SpriteManager spriteManager;
 
-        enum GameState { Start, InGame, GameOver };
+        enum GameState { Start, ControlScreen, AboutScreen, InGame, GameOver };
         GameState currentGameState = GameState.Start;
 
         public int currentScore = 0;
@@ -34,20 +36,26 @@ namespace Apple01
         SpriteFont timerFont;
         public float gameTimer = 45;
 
-        // Title Background
+        // Start Menu title
         Texture2D TitleScreenLogo;
+        // Apple Controls title
+        Texture2D ControlScreenLogo;
+        // About screen title
+        Texture2D AboutScreenLogo;
+        // Game Over Title
+        Texture2D EndScreenLogo;
 
         //Song (.mp3) file        
         SoundEffect FrenzyAudio;        
         SoundEffectInstance frenzyAudioInstance;
 
-        // Keeps tracked if it's first time initializing game to avoid memeory alloc
-        bool firstInitialization = true;
-
-
         // Apple stuff
         AppleSprite fallingApple;
 
+        // Level
+        int level = 0;
+
+        // Constructor 
         public ApplesGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -56,6 +64,7 @@ namespace Apple01
             graphics.PreferredBackBufferWidth = 1124;
         }
 
+        // Update score
         public void AddScore(int score)
         {
             currentScore += score;
@@ -103,8 +112,7 @@ namespace Apple01
             currentScore = 0;
             // Initialize Game State
             currentGameState = GameState.Start;
-            
-
+         
             base.Initialize();
         }
 
@@ -134,6 +142,12 @@ namespace Apple01
             timerFont = Content.Load<SpriteFont>(@"fonts\score");
             // Load Title Screen Background
             TitleScreenLogo = Content.Load<Texture2D>(@"images\FrenzyTitleScreen");
+            // Load Game Controls title
+            ControlScreenLogo = Content.Load<Texture2D>(@"images\appleControls");
+            // Load About Screen title
+            AboutScreenLogo = Content.Load<Texture2D>(@"images\aboutApple");
+            // Load Game Over Screen title
+            EndScreenLogo = Content.Load<Texture2D>(@"images\appleGameOver");
 
             //Load Sound Effect           
             FrenzyAudio = Content.Load<SoundEffect>(@"Sounds\Background");            
@@ -151,15 +165,62 @@ namespace Apple01
             // TODO: Unload any non ContentManager content here
         }
 
-        // Set state to In-Game to start game if player presses any key
-        void startGame()
+        // Set state of game and do proper initialization
+        void setGameState(GameState state)
         {
-            if (Keyboard.GetState().GetPressedKeys().Length > 0)
+            if (state == GameState.InGame)
             {
-                currentGameState = GameState.InGame;
                 spriteManager.Enabled = true;
                 spriteManager.Visible = true;
             }
+            else
+            {
+                spriteManager.Enabled = false;
+                spriteManager.Visible = false;
+            }
+            currentGameState = state;
+            
+        }
+
+        void startGame()
+        {
+            setGameState(GameState.InGame);
+        }
+
+        void controlGame()
+        {
+            setGameState(GameState.ControlScreen);     
+        }
+
+        void aboutGame()
+        {
+            setGameState(GameState.AboutScreen);
+        }
+
+        void returnHome()
+        {
+            setGameState(GameState.Start);
+        }
+
+
+        void handleInput()
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                startGame();
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                controlGame();
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+                aboutGame();
+            if (Keyboard.GetState().IsKeyDown(Keys.B))
+                returnHome();
+        }
+
+        void checkForEnd()
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
+            if (Keyboard.GetState().IsKeyDown(Keys.B))
+                returnHome();
         }
 
         /// <summary>
@@ -181,9 +242,21 @@ namespace Apple01
                     if (fallingApple.position.Y > Window.ClientBounds.Height)
                         fallingApple.position.Y = -19;
 
-                    // Check to start game if player presses a button
-                    startGame();
+                    // Start menu options:
+                    // Enter - Start game, Space - Controls, A - About Game
+                    handleInput();
                     break;
+
+                case GameState.ControlScreen:
+                    // player views keyboard configuration
+                    handleInput();
+                    break;
+
+                case GameState.AboutScreen:
+                    // player views extraneous game information
+                    handleInput();   // press b or B to return to start menu
+                    break;
+
                 case GameState.InGame:
                     // Plays background music                     
                     frenzyAudioInstance.Play();
@@ -191,20 +264,24 @@ namespace Apple01
                     gameTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
                     if (gameTimer <= 0)
                         currentGameState = GameState.GameOver;
-                    
-
                     break;
                 case GameState.GameOver:
                     // Stop background music                     
                     frenzyAudioInstance.Stop();
-
                     // Reset game state
                     Reset();
-
+                    checkForEnd();
                     break;
             }
-
             base.Update(gameTime);
+        }
+
+        // Draw String to Display
+        void DisplayCenteredString(SpriteBatch spriteBatch, String message, int yOffset)
+        {
+            spriteBatch.DrawString(scoreFont, message, new Vector2((Window.ClientBounds.Width / 2)
+                        - (scoreFont.MeasureString(message).X / 2), (Window.ClientBounds.Height / 2)
+                        - (scoreFont.MeasureString(message).Y / 2) + yOffset), Color.SaddleBrown);
         }
 
         /// <summary>
@@ -220,21 +297,40 @@ namespace Apple01
                 case GameState.Start:
                     GraphicsDevice.Clear(Color.AliceBlue);
 
-                    // Draw Text for intro splash screen
+                    // Draw text for intro splash screen
                     spriteBatch.Begin();
                     spriteBatch.Draw(TitleScreenLogo, new Vector2(225, 150), Color.White);
                     fallingApple.Draw(gameTime, spriteBatch);
 
-                    text = "Catch as many apples as you can before timer runs out";
-                    spriteBatch.DrawString(scoreFont, text, new Vector2((Window.ClientBounds.Width / 2)
-                        - (scoreFont.MeasureString(text).X / 2),
-                        (Window.ClientBounds.Height / 2) - (scoreFont.MeasureString(text).Y / 2)),
-                        Color.SaddleBrown);
-                    text = "(Press any key to begin)";
-                    spriteBatch.DrawString(scoreFont, text, new Vector2((Window.ClientBounds.Width / 2)
-                        - (scoreFont.MeasureString(text).X / 2), (Window.ClientBounds.Height / 2)
-                        - (scoreFont.MeasureString(text).Y / 2) + 30), Color.SaddleBrown);
+                    text = "Press Enter to START";
+                    DisplayCenteredString(spriteBatch, text, 0);
 
+                    text = "Press Space for Game Controls";
+                    DisplayCenteredString(spriteBatch, text, 30);
+
+                    text = "Press A for Information about the Game";
+                    DisplayCenteredString(spriteBatch, text, 60);
+
+                    spriteBatch.End();
+                    break;
+
+                case GameState.ControlScreen:
+                    GraphicsDevice.Clear(Color.White);
+
+                    // Display control screen logo
+                    spriteBatch.Begin();
+                    spriteBatch.Draw(ControlScreenLogo, new Vector2(25, 50), Color.White);
+
+                    spriteBatch.End();
+                    break;
+
+                case GameState.AboutScreen:
+                    GraphicsDevice.Clear(Color.White);
+
+                    // Display about screen title
+                    spriteBatch.Begin();
+                    spriteBatch.Draw(AboutScreenLogo, new Vector2(25, 50), Color.White);
+                    // Sponsored by RedBull
                     spriteBatch.End();
                     break;
 
@@ -252,7 +348,6 @@ namespace Apple01
                         Color.DarkBlue, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
                     spriteBatch.DrawString(timerFont, "Time: " + gameTimer.ToString("0.00"),
                                         new Vector2(985, 10), Color.Red);
-
                     spriteBatch.End();
 
                     break;
@@ -261,14 +356,19 @@ namespace Apple01
                     GraphicsDevice.Clear(Color.AliceBlue);
                     // Draw Score at End Screen
                     spriteBatch.Begin();
-                    spriteBatch.DrawString(scoreFont, "Score: " + currentScore, 
-                        new Vector2(Window.ClientBounds.Width/2 - 50, Window.ClientBounds.Height/2 - 50),
-                        Color.DarkBlue, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(EndScreenLogo, new Vector2(225, 150), Color.White);
+                    
+                    DisplayCenteredString(spriteBatch, "Score: " + currentScore, -50);
 
                     text = "(Press Enter key to try again)";
-                    spriteBatch.DrawString(scoreFont, text, new Vector2((Window.ClientBounds.Width / 2)
-                        - (scoreFont.MeasureString(text).X / 2), (Window.ClientBounds.Height / 2)
-                        - (scoreFont.MeasureString(text).Y / 2) + 30), Color.SaddleBrown);
+                    DisplayCenteredString(spriteBatch, text, 30);
+                    
+                    text = "(Press B to return to Start Screen)";
+                    DisplayCenteredString(spriteBatch, text, 60);
+
+                    text = "(Press Escape to Exit)";
+                    DisplayCenteredString(spriteBatch, text, 90);
+                    
 
                     spriteBatch.End();
                     break;
