@@ -41,7 +41,7 @@ namespace AppleFrenzy
             }
         }
 
-        // Constructor
+        // Constructors
         public Animation(Texture2D image, Point frameSize, Point currentFrame,
                 Point sheetSize, int millisecondsPerFrame)
         {
@@ -56,8 +56,13 @@ namespace AppleFrenzy
             : this(image, frameSize, currentFrame,
                sheetSize, DefaultMillisecondsPerFrame) { }
 
-        // Functions
-        // Move to the next frame in the sprite sheet if enough time has passed
+        /// <summary>
+        /// Check how much time has passed and move to the next frame in the 
+        /// animation. This is where animation speed is determined. This is 
+        /// different from frame rate which affects the entire game, this only
+        /// controls a particular sprite animation speed.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void nextFrame(GameTime gameTime)
         {
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
@@ -65,13 +70,22 @@ namespace AppleFrenzy
             {
                 timeSinceLastFrame = 0;
                 ++currentFrame.X;
-                if (currentFrame.X >= sheetSize.X)
-                {
-                    currentFrame.X = 0;
-                    ++currentFrame.Y;
-                    if (currentFrame.Y >= sheetSize.Y)
-                        currentFrame.Y = 0;
-                }
+                moveFrame();
+            }
+        }
+
+        /// <summary>
+        /// If the next frame in the sprite sheet is to the right, down, or
+        /// back at the beginning, go set it. 
+        /// </summary>
+        void moveFrame()
+        {
+            if (currentFrame.X >= sheetSize.X)
+            {
+                currentFrame.X = 0;
+                ++currentFrame.Y;
+                if (currentFrame.Y >= sheetSize.Y)
+                    currentFrame.Y = 0;
             }
         }
 

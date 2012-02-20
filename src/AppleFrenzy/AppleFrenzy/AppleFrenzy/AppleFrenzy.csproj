@@ -119,6 +119,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="SpriteManager.cs" />
+    <Compile Include="Timer.cs" />
     <Compile Include="UserControlledSprite.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,7 @@ namespace Apple01
 {
     class UserControlledSprite : Sprite
     {
+        // idle, run, die and jump animations are loaded for this character
         public Animation idle, run, die, jump;
         private SpriteEffects flip = SpriteEffects.None;
         float movement;
@@ -51,7 +52,7 @@ namespace Apple01
             }
         }
 
-        // Resets character to passed position
+        // Resets character to passed-in position
         public void Reset(Vector2 position)
         {
             this.position = position;
@@ -76,6 +77,12 @@ namespace Apple01
                                 new Point(0, 0), new Point(12, 1));
         }
 
+        /// <summary>
+        /// Get user input for movement of the user controlled sprite
+        /// This is also where changes would be made if we add Windows 
+        /// Phone or XBOX functionality
+        /// </summary>
+        /// <param name="keyboardState"></param>
         public void getInput(KeyboardState keyboardState)
         {
             if (keyboardState.IsKeyDown(Keys.Right))
@@ -88,6 +95,13 @@ namespace Apple01
 
         }
 
+        /// <summary>
+        /// Update sprite according to user input, check for screen bounds
+        /// so character stays within the screen coordinates, apple gravity,
+        /// friction and drag. 
+        /// </summary>
+        /// <param name="gameTime"></param>
+        /// <param name="clientBounds"></param>
         public override void Update(GameTime gameTime, Rectangle clientBounds)
         {
             getInput(Keyboard.GetState());   
@@ -119,6 +133,11 @@ namespace Apple01
             base.Update(gameTime, clientBounds);
         }
 
+        /// <summary>
+        /// Draw player sprite, and flip accordingly when player changes direction
+        /// </summary>
+        /// <param name="gameTime"></param>
+        /// <param name="spriteBatch"></param>
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             // Flip sprite to face the way we're moving

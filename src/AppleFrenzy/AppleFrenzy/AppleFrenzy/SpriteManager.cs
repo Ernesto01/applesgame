@@ -21,6 +21,7 @@ namespace Apple01
         public const int GROUND_LEVEL = 580;
         // System provided variable for drawing to GPU
         SpriteBatch spriteBatch;
+
         // Sprites
         UserControlledSprite player;
         List<Sprite> apples = new List<Sprite>();
@@ -28,15 +29,15 @@ namespace Apple01
         List<Sprite> lives = new List<Sprite>();
         BirdSprite bird;
         BirdSprite bird2;
+
+
         SoundEffect beeHit;
         SoundEffect appleCollected;
         SoundEffect deadBird;
-        
 
-        public SpriteManager(Game game) : base(game)
-        {
-         
-        }
+
+
+        public SpriteManager(Game game) : base(game) { }
 
         /// <summary>
         /// Allows the game component to perform any initialization it needs to before starting
@@ -61,6 +62,10 @@ namespace Apple01
             LoadContent();
         }
 
+
+        /// <summary>
+        /// Load art assets, sounds, etc...
+        /// </summary>
         protected override void LoadContent()
         {
         
@@ -89,7 +94,7 @@ namespace Apple01
                         new Point(9, 1), new Vector2(-2, 0), 1.17f);
             bird2 = new BirdSprite(Game.Content.Load<Texture2D>(@"Images/Bird5"),
                         new Vector2(870, 430), new Point(47, 44), 5, new Point(0, 0),
-                        new Point(9, 1), new Vector2(-1.2f, 0), 1.17f);
+                        new Point(9, 1), new Vector2(-1.4f, 0), 1.17f);
 
             // Load player controlled character
             player = new UserControlledSprite(Game.Content.Load<Texture2D>(@"Images/Idle"),
@@ -183,13 +188,35 @@ namespace Apple01
             }
         }
 
+        void hitPlatform(Sprite platform)
+        {
+            if (platform.collisionRect.Intersects(player.collisionRect))
+                handleWallPlayerHit(platform);
+        }
+
+        void handleWallPlayerHit(Sprite platform)
+        {
+            if (player.collisionRect.Right >= platform.collisionRect.Left ||
+                player.collisionRect.Left <= platform.collisionRect.Right)
+            {   // Player is either below or on top of the platform, remove vertical velocity
+                player.stopVerticalMovement();
+
+            }
+        }
+
         /// <summary>
         /// Allows the game component to update itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
+            // Update player sprite
             player.Update(gameTime, Game.Window.ClientBounds);
+            if (Keyboard.GetState().IsKeyDown(Keys.P))
+                loadApples();
+
+            // Check for platform collision
+            //hitPlatform(platform);
 
             // Update bees
             bee1.Update(gameTime, Game.Window.ClientBounds);
@@ -219,7 +246,7 @@ namespace Apple01
 
             // Check if player is dead and end game if so
             if (!player.IsAlive)
-                ((ApplesGame)Game).gameTimer = 0;
+                ((ApplesGame)Game).EndGame();
 
             base.Update(gameTime);
         }
@@ -240,10 +267,10 @@ namespace Apple01
             // Draw the player
             player.Draw(gameTime, spriteBatch);
 
-            // Draw bird
+            // Draw birds
             if(bird.IsAlive)
                 bird.Draw(gameTime, spriteBatch);
-            if (bird2.IsAlive)
+            if(bird2.IsAlive)
                 bird2.Draw(gameTime, spriteBatch);
 
             // Draw the bees
@@ -257,6 +284,12 @@ namespace Apple01
             spriteBatch.End();
             
             base.Draw(gameTime);
+        }
+
+        void drawBird(Sprite bird, GameTime gameTime)
+        {
+            if (bird.IsAlive)
+                bird.Draw(gameTime, spriteBatch);
         }
     }
 }

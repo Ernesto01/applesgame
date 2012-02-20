@@ -32,10 +32,6 @@ namespace Apple01
 
         BackgroundSprite layer0, layer1, layer2;
 
-        // Timer and Timer Font
-        SpriteFont timerFont;
-        public float gameTimer = 60;
-
         // Start Menu title
         Texture2D TitleScreenLogo;
         // Apple Controls title
@@ -52,8 +48,9 @@ namespace Apple01
         // Apple stuff
         AppleSprite fallingApple;
 
-        // Level
-        int level = 0;
+
+        // Timer
+        Timer timer;
 
         // Constructor 
         public ApplesGame()
@@ -64,13 +61,27 @@ namespace Apple01
             graphics.PreferredBackBufferWidth = 1124;
         }
 
-        // Update score
+        /// <summary>
+        /// Update the score
+        /// </summary>
+        /// <param name="score"></param>
         public void AddScore(int score)
         {
             currentScore += score;
         }
 
-        // Reset game state variables
+
+        /// <summary>
+        /// Signal end of In-game state
+        /// </summary>
+        public void EndGame()
+        {
+            currentGameState = GameState.GameOver;
+        }
+
+        /// <summary>
+        /// Reset the game state
+        /// </summary>
         void Reset()
         {
             // Disable Added GameComponent update and draw method
@@ -80,7 +91,7 @@ namespace Apple01
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
                 // Initialize timer
-                gameTimer = 60;
+                timer.TimeRemaining = 60;
                 // Initialize score
                 currentScore = 0;
                 // Initialize Game State
@@ -107,7 +118,7 @@ namespace Apple01
             spriteManager.Visible = false;
 
             // Initialize timer
-            gameTimer = 60;
+            timer = new Timer(60);
             // Initialize score
             currentScore = 0;
             // Initialize Game State
@@ -139,7 +150,8 @@ namespace Apple01
                     new Point(800, 480), 1.418f, 0.8f);
 
             // Load Timer
-            timerFont = Content.Load<SpriteFont>(@"fonts\score");
+            //timerFont = Content.Load<SpriteFont>(@"fonts\score");
+            timer.LoadContent(Content);
             // Load Title Screen Background
             TitleScreenLogo = Content.Load<Texture2D>(@"images\FrenzyTitleScreen");
             // Load Game Controls title
@@ -168,18 +180,17 @@ namespace Apple01
         // Set state of game and do proper initialization
         void setGameState(GameState state)
         {
-            currentGameState = state;
-            if (state != GameState.InGame)
-            {
-                spriteManager.Enabled = false;
-                spriteManager.Visible = false;
-            }
-            else if(state == GameState.InGame)
+            if (state == GameState.InGame)
             {
                 spriteManager.Enabled = true;
                 spriteManager.Visible = true;
             }
-            
+            else
+            {
+                spriteManager.Enabled = false;
+                spriteManager.Visible = false;
+            }
+            currentGameState = state;
             
         }
 
@@ -264,8 +275,8 @@ namespace Apple01
                     // Plays background music                     
                     frenzyAudioInstance.Play();
                     // Handle timer
-                    gameTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    if (gameTimer <= 0)
+                    timer.Update(gameTime);
+                    if (timer.EndTime())
                         currentGameState = GameState.GameOver;
                     break;
                 case GameState.GameOver:
@@ -384,8 +395,9 @@ namespace Apple01
                     // Draw the score
                     spriteBatch.DrawString(scoreFont, "Score: " + currentScore, new Vector2(10, 10),
                         Color.DarkBlue, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
-                    spriteBatch.DrawString(timerFont, "Time: " + gameTimer.ToString("0.00"),
-                                        new Vector2(985, 10), Color.Red);
+                    
+                    // Draw the time remaining
+                    timer.Draw(spriteBatch);
                     spriteBatch.End();
 
                     break;

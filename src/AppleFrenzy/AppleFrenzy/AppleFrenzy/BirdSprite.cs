@@ -24,6 +24,10 @@ namespace AppleFrenzy
             IsAlive = true;
         }
 
+
+        /// <summary>
+        /// return velocity for its direction
+        /// </summary>
         public override Vector2 direction
         {
             get { return velocity; }

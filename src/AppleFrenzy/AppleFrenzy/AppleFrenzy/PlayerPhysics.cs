@@ -78,18 +78,25 @@ namespace AppleFrenzy
 
             // Apply velocity to player position <----
             player.position += velocity * elapsed;
-            player.position.X = (float)Math.Round(position.X);
-            player.position.Y = (float)Math.Round(position.Y);
+            player.position = new Vector2((float)Math.Round(player.position.X),
+                                (float)Math.Round(player.position.Y));
 
-            // if collisiong stopped us from moving, reset velocity
-            //if (position.X == previousPosition.X)
-            //    velocity.X = 0;
-            //if (position.Y == previousPosition.Y)
-            //    velocity.Y = 0;
-            
+
 
         }
 
+        void handleCollision()
+        {
+
+        }
+
+
+        /// <summary>
+        /// Handle player jumps and returns vertical velocity
+        /// </summary>
+        /// <param name="velocityY"></param>
+        /// <param name="gameTime"></param>
+        /// <returns></returns>
         private float Jump(float velocityY, GameTime gameTime)
         {
             if (isJumping)

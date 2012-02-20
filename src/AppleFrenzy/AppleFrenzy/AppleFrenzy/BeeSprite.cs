@@ -7,18 +7,13 @@ namespace AppleFrenzy
 {
     class BeeSprite : Sprite
     {
-        enum Direction { right, left };
-        Direction facing;
         private SpriteEffects flip = SpriteEffects.None;
 
         // Constructor 
         public BeeSprite(Texture2D image, Vector2 position, Point frameSize, int collisionOffset,
             Point currentFrame, Point sheetSize, Vector2 velocity, float size) 
             : base(image, position, frameSize, collisionOffset, currentFrame, sheetSize, 
-                velocity, size) 
-        {
-            facing = Direction.left;
-        }
+                velocity, size) {}
 
         public override Vector2 direction
         {
