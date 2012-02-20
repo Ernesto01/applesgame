@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Apple01;
@@ -43,30 +44,18 @@ namespace AppleFrenzy
             OnGround = true;
         }
 
-        public void ApplyPhysics(GameTime gameTime, ref Vector2 position, ref Vector2 velocity, float movement)
+        public void ApplyPhysics(GameTime gameTime, float movement, List<Sprite> tiles)
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            Vector2 previousPosition = position;
+            Vector2 previousPosition = player.position;
 
             player.velocity.X += movement * MoveAcceleration * elapsed;
-            velocity.Y = MathHelper.Clamp(velocity.Y + GravityAcceleration * elapsed,
+            player.velocity.Y = MathHelper.Clamp(player.velocity.Y + GravityAcceleration * elapsed,
                                        -MaxFallSpeed, MaxFallSpeed);
 
             // Handle jumps
-            velocity.Y = Jump(velocity.Y, gameTime);
-            
-            // Check that player doesn't fall under GROUND_LEVEL
-            if (player.position.Y >= GROUND_LEVEL)
-            {
-                player.position.Y = GROUND_LEVEL;
-                OnGround = true;
-            }
-            else
-            {
-                OnGround = false;
-            }
+            player.velocity.Y = Jump(player.velocity.Y, gameTime);
 
-            
             // Apply drag
             if (OnGround)
                 player.velocity.X *= GroundDragFactor;
@@ -74,20 +63,70 @@ namespace AppleFrenzy
                 player.velocity.X *= AirDragFactor;
 
             // Cap player speed
-            player.velocity.X = MathHelper.Clamp(velocity.X, -MaxMoveSpeed, MaxMoveSpeed);
+            player.velocity.X = MathHelper.Clamp(player.velocity.X, -MaxMoveSpeed, MaxMoveSpeed);
 
             // Apply velocity to player position <----
-            player.position += velocity * elapsed;
+            player.position += player.velocity * elapsed;
             player.position = new Vector2((float)Math.Round(player.position.X),
                                 (float)Math.Round(player.position.Y));
 
+            // Handle ground and tile (platform) collision detection
+            handleCollision(tiles);
 
-
+            if (player.position.Y == previousPosition.Y)
+                player.velocity.Y = 0;
         }
 
-        void handleCollision()
-        {
 
+        /// <summary>
+        /// Handle collision with ground or platforms
+        /// </summary>
+        /// <param name="tiles"></param>
+        void handleCollision(List<Sprite> tiles)
+        {
+            OnGround = false;
+
+            if (player.position.Y >= GROUND_LEVEL)
+            {
+                OnGround = true;
+                player.position = new Vector2(player.position.X, GROUND_LEVEL);
+            }
+            else
+            {
+                tileCollision(tiles);
+            }
+            
+        }
+
+
+        /// <summary>
+        /// Do hit detection with platforms, if player lands above, then modify 
+        /// position so gravity doesn't affect it. If player is under the 
+        /// platform, don't let him jump through it.
+        /// </summary>
+        /// <param name="tiles"></param>
+        void tileCollision(List<Sprite> tiles)
+        {
+            foreach (Sprite tile in tiles)
+            {
+                float top = tile.collisionRect.Top - player.currentAnimation.FrameHeight - 4.0f;
+
+                if (tile.collisionRect.Left < player.collisionRect.Right && tile.collisionRect.Right > player.collisionRect.Left)
+                {
+                    // If player is under the platform 
+                    if (player.position.Y <= tile.collisionRect.Bottom-15 &&
+                        player.position.Y > tile.collisionRect.Top)
+                    {
+                        player.position = new Vector2(player.position.X, tile.collisionRect.Bottom-15);
+                    }
+                    else if (player.position.Y >= top && 
+                        (player.position.Y + player.currentAnimation.FrameHeight < tile.collisionRect.Bottom))
+                    {   // Player is above the platform
+                        OnGround = true;
+                        player.position = new Vector2(player.position.X, top);
+                    }
+                }
+            }
         }
 
 
@@ -104,7 +143,7 @@ namespace AppleFrenzy
                 if ((!wasJumping && OnGround) || jumpTime > 0f)
                 {
                     jumpTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    player.currentAnimation = player.jump;
+                    player.setAnimation(player.jump);
                 }
                 // if we are in the ascent of the the jump
                 if (0f < jumpTime && jumpTime <= MaxJumpTime)

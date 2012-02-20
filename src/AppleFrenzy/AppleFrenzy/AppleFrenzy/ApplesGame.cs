@@ -361,8 +361,8 @@ namespace Apple01
                     // Display about screen title
                     spriteBatch.Begin();
                     spriteBatch.Draw(AboutScreenLogo, new Vector2(25, 50), Color.White);
-                    // Sponsored by RedBull
-                    text = "Development by: Ernesto Pavone, Corbin Benally & Alex Solis";
+                    
+                    text = "Development by: Ernesto Pavon, Corbin Benally & Alex Solis";
                     DisplayCenteredString(spriteBatch, text, -30);
 
                     text = "Tools:                                   ";

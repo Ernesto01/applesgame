@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using AppleFrenzy;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Apple01
 {
@@ -16,40 +18,36 @@ namespace Apple01
      
         PlayerPhysics physics;
 
+        // Address animations 
+        public enum AnimationType { idle, run, die, jump };
+
         /* Constructors */
         public UserControlledSprite(Texture2D textImage, Vector2 pos, Point frameSize,
                 int collisionOffset, Point currentFrame, Point sheetSize, Vector2 speed, float size)
             : base(textImage, pos, frameSize, collisionOffset, currentFrame, sheetSize, speed, size) 
         {
             physics = new PlayerPhysics(this);
+            IsAlive = true;
         }
         public UserControlledSprite(Texture2D textImage, Vector2 pos, Point frameSize,
                 int collisionOffset, Point currentFrame, Point sheetSize, Vector2 speed, float size, int millisecondsPerFrame)
             : base(textImage, pos, frameSize, collisionOffset, currentFrame, sheetSize, speed, size, millisecondsPerFrame) 
         {
             physics = new PlayerPhysics(this);
+            IsAlive = true;
         }
 
-
-        public override Vector2 direction
+        /// <summary>
+        /// Set and initialize animation if it's not already running
+        /// </summary>
+        /// <param name="animation"></param>
+        public void setAnimation(Animation animation)
         {
-            get
-            {
-                Vector2 inputDirection = Vector2.Zero;
+            if (currentAnimation == animation)
+                return;
 
-                if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                    inputDirection.X = -1;
-                if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                    inputDirection.X = 1;
-                
-                GamePadState gamepadState = GamePad.GetState(PlayerIndex.One);
-                if (gamepadState.ThumbSticks.Left.X != 0)
-                    inputDirection.X += gamepadState.ThumbSticks.Left.X;
-                if (gamepadState.ThumbSticks.Left.Y != 0)
-                    inputDirection.Y -= gamepadState.ThumbSticks.Left.Y;
-
-                return inputDirection * velocity;
-            }
+            currentAnimation = animation;
+            currentAnimation.Initialize();
         }
 
         // Resets character to passed-in position
@@ -64,7 +62,7 @@ namespace Apple01
         // Load and initialize animations, sounds, etc...
         public override void Initialize(IServiceProvider serviceProvider)
         {
-            IsAlive = true;
+            
       
             ContentManager content = new ContentManager(serviceProvider, "Content");
             idle = new Animation(content.Load<Texture2D>(@"Images/Idle"), new Point(64, 64),
@@ -102,11 +100,11 @@ namespace Apple01
         /// </summary>
         /// <param name="gameTime"></param>
         /// <param name="clientBounds"></param>
-        public override void Update(GameTime gameTime, Rectangle clientBounds)
+        public void Update(GameTime gameTime, Rectangle clientBounds, List<Sprite> tiles)
         {
             getInput(Keyboard.GetState());   
 
-            physics.ApplyPhysics(gameTime, ref position, ref velocity, movement);
+            physics.ApplyPhysics(gameTime, movement, tiles);
 
             if (IsAlive && physics.OnGround)
             {
@@ -120,6 +118,14 @@ namespace Apple01
             movement = 0f;
             physics.isJumping = false;
 
+            // Make sure player doesn't move out of window
+            moveWithinBoundary(clientBounds);
+
+            base.Update(gameTime, clientBounds);
+        }
+
+        void moveWithinBoundary(Rectangle clientBounds)
+        {
             // If sprite is offscreen move back within game window
             if (position.X < 0)
                 position.X = 0;
@@ -129,8 +135,6 @@ namespace Apple01
                 position.X = clientBounds.Width - currentAnimation.FrameWidth;
             if (position.Y > clientBounds.Height - currentAnimation.FrameHeight)
                 position.Y = clientBounds.Height - currentAnimation.FrameHeight;
-
-            base.Update(gameTime, clientBounds);
         }
 
         /// <summary>

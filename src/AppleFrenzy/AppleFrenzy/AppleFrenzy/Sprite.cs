@@ -25,9 +25,9 @@ namespace Apple01
         /// <summary>
         /// Returns the direction vector of the sprite
         /// </summary>
-        public abstract Vector2 direction
+        public virtual Vector2 direction
         {
-            get;
+            get { return new Vector2(0,0); }
         }
 
         public virtual Rectangle collisionRect

@@ -29,6 +29,9 @@ namespace Apple01
         List<Sprite> lives = new List<Sprite>();
         BirdSprite bird;
         BirdSprite bird2;
+        List<Sprite> tiles = new List<Sprite>();
+        //PlatformSprite platform;
+        //PlatformSprite platform2;
 
 
         SoundEffect beeHit;
@@ -82,10 +85,10 @@ namespace Apple01
 
             // Load bees sprites
             bee1 = new BeeSprite(Game.Content.Load<Texture2D>(@"Images/Bee1"),
-                        new Vector2(600, GROUND_LEVEL+5), new Point(24,24), 5, new Point(0,0), 
+                        new Vector2(600, GROUND_LEVEL), new Point(24,24), 5, new Point(0,0), 
                         new Point(3,1), new Vector2(-3,0), 1f);
             bee2 = new BeeSprite(Game.Content.Load<Texture2D>(@"Images/Bee2"),
-                        new Vector2(900, GROUND_LEVEL + 35), new Point(24, 24), 5, new Point(0, 0),
+                        new Vector2(900, GROUND_LEVEL + 30), new Point(24, 24), 5, new Point(0, 0),
                         new Point(3, 1), new Vector2(-2, 0), 1f);
 
             // Load bird sprite
@@ -94,13 +97,21 @@ namespace Apple01
                         new Point(9, 1), new Vector2(-2, 0), 1.17f);
             bird2 = new BirdSprite(Game.Content.Load<Texture2D>(@"Images/Bird5"),
                         new Vector2(870, 430), new Point(47, 44), 5, new Point(0, 0),
-                        new Point(9, 1), new Vector2(-1.4f, 0), 1.17f);
+                        new Point(9, 1), new Vector2(-1.75f, 0), 1.17f);
 
             // Load player controlled character
             player = new UserControlledSprite(Game.Content.Load<Texture2D>(@"Images/Idle"),
                         new Vector2(0,GROUND_LEVEL), new Point(64, 64), 10, new Point(0, 0), new Point(1, 1),
                         new Vector2(6, 6), 1f);
             player.Initialize(Game.Services);
+
+            // Load platform 
+            tiles.Add(new PlatformSprite(Game.Content.Load<Texture2D>(@"Images/BlockB0"),
+                        new Vector2(200, 535), new Point(40, 32), 5, new Vector2(0.2f, 0),
+                        Game.Window.ClientBounds, 1.0f));
+            tiles.Add(new PlatformSprite(Game.Content.Load<Texture2D>(@"Images/BlockB0"),
+                        new Vector2(515, 415), new Point(40, 32), 5, new Vector2(0.2f, 0),
+                        Game.Window.ClientBounds, 1.0f));
 
             // Load Apples
             loadApples();
@@ -120,7 +131,7 @@ namespace Apple01
         /// </summary>
         private void loadApples()
         {
-            for (int i = 0; i < 10; ++i)
+            for (int i = 0; i < 12; ++i)
                 apples.Add(new AppleSprite(Game.Content.Load<Texture2D>(@"Images\Apple"),
                     new Point(28, 32), 5, new Vector2(0, 2), Game.Window.ClientBounds, 0.60f));
         }
@@ -144,10 +155,12 @@ namespace Apple01
                 --i;
 
                 // Check to see if we need to drop more apples
-                if (apples.Count <= 2)
+                if (apples.Count <= 3)
                     loadApples();
             }
-            if (sprite.collisionRect.Bottom >= GROUND_LEVEL + 78)
+            if (sprite.collisionRect.Bottom >= GROUND_LEVEL + 72 || 
+                sprite.collisionRect.Intersects(tiles[0].collisionRect) ||
+                sprite.collisionRect.Intersects(tiles[1].collisionRect))
                 sprite.stopVerticalMovement();
             
         }
@@ -188,22 +201,6 @@ namespace Apple01
             }
         }
 
-        void hitPlatform(Sprite platform)
-        {
-            if (platform.collisionRect.Intersects(player.collisionRect))
-                handleWallPlayerHit(platform);
-        }
-
-        void handleWallPlayerHit(Sprite platform)
-        {
-            if (player.collisionRect.Right >= platform.collisionRect.Left ||
-                player.collisionRect.Left <= platform.collisionRect.Right)
-            {   // Player is either below or on top of the platform, remove vertical velocity
-                player.stopVerticalMovement();
-
-            }
-        }
-
         /// <summary>
         /// Allows the game component to update itself.
         /// </summary>
@@ -211,12 +208,11 @@ namespace Apple01
         public override void Update(GameTime gameTime)
         {
             // Update player sprite
-            player.Update(gameTime, Game.Window.ClientBounds);
-            if (Keyboard.GetState().IsKeyDown(Keys.P))
-                loadApples();
+            player.Update(gameTime, Game.Window.ClientBounds, tiles);
 
-            // Check for platform collision
-            //hitPlatform(platform);
+            // This is for DEBUG Purposes only
+            //if (Keyboard.GetState().IsKeyDown(Keys.P))
+            //    loadApples();
 
             // Update bees
             bee1.Update(gameTime, Game.Window.ClientBounds);
@@ -247,6 +243,11 @@ namespace Apple01
             // Check if player is dead and end game if so
             if (!player.IsAlive)
                 ((ApplesGame)Game).EndGame();
+
+            // Update platforms
+            foreach(Sprite platform in tiles)
+                platform.Update(gameTime, Game.Window.ClientBounds);
+            
 
             base.Update(gameTime);
         }
@@ -280,6 +281,13 @@ namespace Apple01
             // Draw the apples
             foreach (Sprite sprite in apples)
                 sprite.Draw(gameTime, spriteBatch);
+
+            // Draw platform
+            foreach(Sprite platform in tiles)
+                platform.Draw(gameTime, spriteBatch);
+            
+
+            
 
             spriteBatch.End();
             

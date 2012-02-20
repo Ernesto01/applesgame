@@ -56,6 +56,17 @@ namespace AppleFrenzy
             : this(image, frameSize, currentFrame,
                sheetSize, DefaultMillisecondsPerFrame) { }
 
+
+        /// <summary>
+        /// Initializes animation from the beginning
+        /// </summary>
+        public void Initialize()
+        {
+            currentFrame.X = 0;
+            currentFrame.Y = 0;
+            timeSinceLastFrame = 0;
+        }
+
         /// <summary>
         /// Check how much time has passed and move to the next frame in the 
         /// animation. This is where animation speed is determined. This is 

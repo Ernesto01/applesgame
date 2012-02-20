@@ -41,14 +41,14 @@ namespace AppleFrenzy
         /// </summary>
         float mapScreenCoordinatesToGame(float x)
         {
-            return 0.0065f * x - 3;
+            return 0.0065f * x - 7;
         }
 
         // Do Linear transformation for Y coordinates and convert back to Screen
         // coordinates
         float mapGameCoordinatesToScreen(float y)
         {
-            return (int)(y * (-100) + 485);
+            return (int)(y * (-100) + 475);
         }
 
         public override void Update(GameTime gameTime, Rectangle clientBounds)
