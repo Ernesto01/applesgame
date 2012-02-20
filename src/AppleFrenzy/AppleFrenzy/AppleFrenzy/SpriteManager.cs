@@ -27,6 +27,7 @@ namespace Apple01
         BeeSprite bee1, bee2;
         List<Sprite> lives = new List<Sprite>();
         BirdSprite bird;
+        BirdSprite bird2;
         SoundEffect beeHit;
         SoundEffect appleCollected;
         SoundEffect deadBird;
@@ -86,6 +87,9 @@ namespace Apple01
             bird = new BirdSprite(Game.Content.Load<Texture2D>(@"Images/Bird5"),
                         new Vector2(500, 530), new Point(47, 44), 5, new Point(0, 0),
                         new Point(9, 1), new Vector2(-2, 0), 1.17f);
+            bird2 = new BirdSprite(Game.Content.Load<Texture2D>(@"Images/Bird5"),
+                        new Vector2(870, 430), new Point(47, 44), 5, new Point(0, 0),
+                        new Point(9, 1), new Vector2(-1.2f, 0), 1.17f);
 
             // Load player controlled character
             player = new UserControlledSprite(Game.Content.Load<Texture2D>(@"Images/Idle"),
@@ -143,6 +147,7 @@ namespace Apple01
             
         }
 
+        // When player gets hit, reset location and reduce lives
         void onPlayerHit()
         {
             beeHit.Play();
@@ -152,6 +157,30 @@ namespace Apple01
             if (lives.Count == 0)
                 player.IsAlive = false;
             ((ApplesGame)Game).AddScore(-4);
+        }
+
+        // Do Bird collision detection and calls its update routine if alive
+        void updateBird(Sprite bird, GameTime gameTime)
+        {
+            if (!bird.IsAlive)
+                return;
+
+            bird.Update(gameTime, Game.Window.ClientBounds);
+
+            // Check for bird collision detection
+            if (bird.collisionRect.Intersects(player.collisionRect))
+            {
+                if (Math.Abs(player.collisionRect.Bottom - bird.collisionRect.Top) <= 6.8f)
+                {
+                    bird.IsAlive = false;
+                    deadBird.Play();
+                    ((ApplesGame)Game).AddScore(10);
+                }
+                else
+                {
+                    onPlayerHit();
+                }
+            }
         }
 
         /// <summary>
@@ -167,33 +196,14 @@ namespace Apple01
             bee2.Update(gameTime, Game.Window.ClientBounds);
 
             // update birds
-            if (bird.IsAlive)
-            {
-                bird.Update(gameTime, Game.Window.ClientBounds);
-
-                // Check for bird collision detection
-                if (bird.collisionRect.Intersects(player.collisionRect))
-                {
-                    if (Math.Abs(player.collisionRect.Bottom - bird.collisionRect.Top) <= 4.8f)
-                    {
-                        bird.IsAlive = false;
-                        deadBird.Play();
-                        ((ApplesGame)Game).AddScore(10);
-                    }
-                    else
-                    {
-                        onPlayerHit();
-                    }
-                }
-
-            }
+            updateBird(bird, gameTime);
+            updateBird(bird2, gameTime);
 
             // Check for bees' intersection with player
             if (bee1.collisionRect.Intersects(player.collisionRect) ||
                 bee2.collisionRect.Intersects(player.collisionRect))
             {
                 onPlayerHit();
-
             }
 
             // Update apples
@@ -233,6 +243,8 @@ namespace Apple01
             // Draw bird
             if(bird.IsAlive)
                 bird.Draw(gameTime, spriteBatch);
+            if (bird2.IsAlive)
+                bird2.Draw(gameTime, spriteBatch);
 
             // Draw the bees
             bee1.Draw(gameTime, spriteBatch);

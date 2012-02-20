@@ -34,7 +34,7 @@ namespace Apple01
 
         // Timer and Timer Font
         SpriteFont timerFont;
-        public float gameTimer = 45;
+        public float gameTimer = 60;
 
         // Start Menu title
         Texture2D TitleScreenLogo;
@@ -80,7 +80,7 @@ namespace Apple01
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
                 // Initialize timer
-                gameTimer = 45;
+                gameTimer = 60;
                 // Initialize score
                 currentScore = 0;
                 // Initialize Game State
@@ -107,7 +107,7 @@ namespace Apple01
             spriteManager.Visible = false;
 
             // Initialize timer
-            gameTimer = 45;
+            gameTimer = 60;
             // Initialize score
             currentScore = 0;
             // Initialize Game State
@@ -168,17 +168,18 @@ namespace Apple01
         // Set state of game and do proper initialization
         void setGameState(GameState state)
         {
-            if (state == GameState.InGame)
-            {
-                spriteManager.Enabled = true;
-                spriteManager.Visible = true;
-            }
-            else
+            currentGameState = state;
+            if (state != GameState.InGame)
             {
                 spriteManager.Enabled = false;
                 spriteManager.Visible = false;
             }
-            currentGameState = state;
+            else if(state == GameState.InGame)
+            {
+                spriteManager.Enabled = true;
+                spriteManager.Visible = true;
+            }
+            
             
         }
 
@@ -213,6 +214,8 @@ namespace Apple01
                 aboutGame();
             if (Keyboard.GetState().IsKeyDown(Keys.B))
                 returnHome();
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
         }
 
         void checkForEnd()
@@ -303,13 +306,16 @@ namespace Apple01
                     fallingApple.Draw(gameTime, spriteBatch);
 
                     text = "Press Enter to START";
-                    DisplayCenteredString(spriteBatch, text, 0);
-
-                    text = "Press Space for Game Controls";
                     DisplayCenteredString(spriteBatch, text, 30);
 
-                    text = "Press A for Information about the Game";
+                    text = "Press Space for Game Controls";
                     DisplayCenteredString(spriteBatch, text, 60);
+
+                    text = "Press A for Information about the Game";
+                    DisplayCenteredString(spriteBatch, text, 90);
+
+                    text = "Press Escape to Exit";
+                    DisplayCenteredString(spriteBatch, text, 120);
 
                     spriteBatch.End();
                     break;
@@ -320,6 +326,20 @@ namespace Apple01
                     // Display control screen logo
                     spriteBatch.Begin();
                     spriteBatch.Draw(ControlScreenLogo, new Vector2(25, 50), Color.White);
+                    text = "The UP directional arrow allows the character to JUMP.";
+                    DisplayCenteredString(spriteBatch, text, -30);
+
+                    text = "The RIGHT directional arrow allows the character to move RIGHT.";
+                    DisplayCenteredString(spriteBatch, text, 0);
+
+                    text = "The LEFT directional arrow allows the character to move LEFT.";
+                    DisplayCenteredString(spriteBatch, text, 30);
+
+                    text = "*Jumping to catch the apples will earn you DOUBLE points!";
+                    DisplayCenteredString(spriteBatch, text, 60);
+
+                    text = "(Press B to return to the Start Menu)";
+                    DisplayCenteredString(spriteBatch, text, 120);
 
                     spriteBatch.End();
                     break;
@@ -331,6 +351,24 @@ namespace Apple01
                     spriteBatch.Begin();
                     spriteBatch.Draw(AboutScreenLogo, new Vector2(25, 50), Color.White);
                     // Sponsored by RedBull
+                    text = "Development by: Ernesto Pavone, Corbin Benally & Alex Solis";
+                    DisplayCenteredString(spriteBatch, text, -30);
+
+                    text = "Tools:                                   ";
+                    DisplayCenteredString(spriteBatch, text, 0);
+
+                    text = " Microsoft Visual Studio 2010";
+                    DisplayCenteredString(spriteBatch, text, 30);
+
+                    text = " XNA 4.0 framework and C#    ";
+                    DisplayCenteredString(spriteBatch, text, 60);
+
+                    text = " Github                      ";
+                    DisplayCenteredString(spriteBatch, text, 90);
+                    
+                    text = "(Press B to return to the Start Menu)";
+                    DisplayCenteredString(spriteBatch, text, 150);
+
                     spriteBatch.End();
                     break;
 
@@ -363,7 +401,7 @@ namespace Apple01
                     text = "(Press Enter key to try again)";
                     DisplayCenteredString(spriteBatch, text, 30);
                     
-                    text = "(Press B to return to Start Screen)";
+                    text = "(Press B to return to Start Menu)";
                     DisplayCenteredString(spriteBatch, text, 60);
 
                     text = "(Press Escape to Exit)";

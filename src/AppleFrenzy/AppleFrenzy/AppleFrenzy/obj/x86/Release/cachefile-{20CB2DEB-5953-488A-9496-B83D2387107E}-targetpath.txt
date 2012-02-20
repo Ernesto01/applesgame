@@ -21,6 +21,7 @@ Content\Images\FrenzyTitleScreen.xnb
 Content\Images\aboutApple.xnb
 Content\Images\appleControls.xnb
 Content\Images\appleGameOver.xnb
+Content\Images\BlockB0.xnb
 Content\Fonts\Score.xnb
 Content\Sounds\Background.xnb
 Content\Sounds\Bird.xnb
