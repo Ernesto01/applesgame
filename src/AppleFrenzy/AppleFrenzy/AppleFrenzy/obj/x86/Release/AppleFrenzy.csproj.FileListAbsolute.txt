@@ -195,4 +195,3 @@ C:\Users\camilo2\Desktop\Spring2012\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\
 C:\Users\camilo2\Desktop\Spring2012\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\camilo2\Desktop\Spring2012\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Release\AppleFrenzy.exe
 C:\Users\camilo2\Desktop\Spring2012\AppleFrenzy\AppleFrenzy\AppleFrenzy\obj\x86\Release\AppleFrenzy.pdb
-C:\Users\camilo2\Git\applesgame\src\AppleFrenzy\AppleFrenzy\AppleFrenzy\bin\x86\Release\Content\Images\BlockB0.xnb

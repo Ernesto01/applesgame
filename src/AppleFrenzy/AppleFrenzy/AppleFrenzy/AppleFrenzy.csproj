@@ -114,7 +114,6 @@
     <Compile Include="BeeSprite.cs" />
     <Compile Include="BirdSprite.cs" />
     <Compile Include="HudSprite.cs" />
-    <Compile Include="Level.cs" />
     <Compile Include="PlatformSprite.cs" />
     <Compile Include="PlayerPhysics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

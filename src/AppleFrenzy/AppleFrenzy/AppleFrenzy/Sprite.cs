@@ -20,7 +20,6 @@ namespace Apple01
 
         /* Properties */
         public bool IsAlive { get; set; }
-        public bool IsOnGround { get; set; }
 
         /// <summary>
         /// Returns the direction vector of the sprite
@@ -42,6 +41,51 @@ namespace Apple01
             }
         }
 
+        // Accessor / Mutators - helps eliminates dots elsewhere
+        public float xPosition
+        {
+            get { return position.X; }
+            set { position.X = value; }
+        }
+
+        public float yPosition
+        {
+            get { return position.Y; }
+            set { position.Y = value; }
+        }
+
+        public float xVelocity
+        {
+            get { return velocity.X; }
+            set { velocity.X = value; }
+        }
+
+        public float yVelocity
+        {
+            get { return velocity.Y; }
+            set { velocity.Y = value; }
+        }
+
+        public int RectangleBottom
+        {
+            get { return collisionRect.Bottom; }
+        }
+
+        public int RectangleTop
+        {
+            get { return collisionRect.Top; }
+        }
+
+        public int RectangleRight
+        {
+            get { return collisionRect.Right; }
+        }
+
+        public int RectangleLeft
+        {
+            get { return collisionRect.Left; }
+        }
+
         /* Constructors */
         public Sprite(Texture2D image, Vector2 position, Point frameSize, int collisionOffset,
                 Point currentFrame, Point sheetSize, Vector2 velocity, float size, int millisecondsPerFrame)
@@ -51,7 +95,6 @@ namespace Apple01
             this.collisionOffset = collisionOffset;
             this.velocity = velocity;
             this.size = size;
-            IsOnGround = false;
         }
 
         public Sprite(Texture2D image, Vector2 position, Point frameSize,
@@ -62,7 +105,6 @@ namespace Apple01
             this.collisionOffset = collisionOffset;
             this.velocity = velocity;
             this.size = size;
-            IsOnGround = false;
         }
 
 

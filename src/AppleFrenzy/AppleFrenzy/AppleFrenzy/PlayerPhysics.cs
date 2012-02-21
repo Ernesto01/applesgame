@@ -49,32 +49,32 @@ namespace AppleFrenzy
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             Vector2 previousPosition = player.position;
 
-            player.velocity.X += movement * MoveAcceleration * elapsed;
-            player.velocity.Y = MathHelper.Clamp(player.velocity.Y + GravityAcceleration * elapsed,
+            player.xVelocity += movement * MoveAcceleration * elapsed;
+            player.yVelocity = MathHelper.Clamp(player.yVelocity + GravityAcceleration * elapsed,
                                        -MaxFallSpeed, MaxFallSpeed);
 
             // Handle jumps
-            player.velocity.Y = Jump(player.velocity.Y, gameTime);
+            player.yVelocity = Jump(player.yVelocity, gameTime);
 
             // Apply drag
             if (OnGround)
-                player.velocity.X *= GroundDragFactor;
+                player.xVelocity *= GroundDragFactor;
             else if(!OnGround)
-                player.velocity.X *= AirDragFactor;
+                player.xVelocity *= AirDragFactor;
 
             // Cap player speed
-            player.velocity.X = MathHelper.Clamp(player.velocity.X, -MaxMoveSpeed, MaxMoveSpeed);
+            player.xVelocity = MathHelper.Clamp(player.xVelocity, -MaxMoveSpeed, MaxMoveSpeed);
 
             // Apply velocity to player position <----
             player.position += player.velocity * elapsed;
-            player.position = new Vector2((float)Math.Round(player.position.X),
-                                (float)Math.Round(player.position.Y));
+            player.position = new Vector2((float)Math.Round(player.xPosition),
+                                (float)Math.Round(player.yPosition));
 
             // Handle ground and tile (platform) collision detection
             handleCollision(tiles);
 
-            if (player.position.Y == previousPosition.Y)
-                player.velocity.Y = 0;
+            if (player.yPosition == previousPosition.Y)
+                player.yVelocity = 0;
         }
 
 
@@ -86,10 +86,10 @@ namespace AppleFrenzy
         {
             OnGround = false;
 
-            if (player.position.Y >= GROUND_LEVEL)
+            if (player.yPosition >= GROUND_LEVEL)
             {
                 OnGround = true;
-                player.position = new Vector2(player.position.X, GROUND_LEVEL);
+                player.position = new Vector2(player.xPosition, GROUND_LEVEL);
             }
             else
             {
@@ -109,21 +109,21 @@ namespace AppleFrenzy
         {
             foreach (Sprite tile in tiles)
             {
-                float top = tile.collisionRect.Top - player.currentAnimation.FrameHeight - 4.0f;
+                float top = tile.RectangleTop - player.currentAnimation.FrameHeight - 4.0f;
 
-                if (tile.collisionRect.Left < player.collisionRect.Right && tile.collisionRect.Right > player.collisionRect.Left)
+                if (tile.RectangleLeft < player.RectangleRight && tile.RectangleRight > player.RectangleLeft)
                 {
                     // If player is under the platform 
-                    if (player.position.Y <= tile.collisionRect.Bottom-15 &&
-                        player.position.Y > tile.collisionRect.Top)
+                    if (player.yPosition <= tile.RectangleBottom-15 &&
+                        player.yPosition > tile.RectangleTop)
                     {
-                        player.position = new Vector2(player.position.X, tile.collisionRect.Bottom-15);
+                        player.position = new Vector2(player.xPosition, tile.RectangleBottom-15);
                     }
-                    else if (player.position.Y >= top && 
-                        (player.position.Y + player.currentAnimation.FrameHeight < tile.collisionRect.Bottom))
+                    else if (player.yPosition >= top && 
+                        (player.yPosition + player.currentAnimation.FrameHeight < tile.RectangleBottom))
                     {   // Player is above the platform
                         OnGround = true;
-                        player.position = new Vector2(player.position.X, top);
+                        player.position = new Vector2(player.xPosition, top);
                     }
                 }
             }

@@ -8,6 +8,8 @@ namespace Apple01
     {
         // Random number generator - Needed to randomly select spawn points for this sprite
         static Random random = new Random();
+
+        bool IsOnGround = false;
         
         // AppleSprite Constructor
         public AppleSprite(Texture2D image, Point frameSize, int collisionOffset, Vector2 velocity, Rectangle clientBounds, float size) :

@@ -18,28 +18,26 @@ namespace Apple01
     /// </summary>
     public class SpriteManager : Microsoft.Xna.Framework.DrawableGameComponent
     {
+        // Constant for ground vertical position
         public const int GROUND_LEVEL = 580;
+        // Enum for addressing variables in array 
+        enum SpriteType { bee1, bee2, bird1, bird2 };
+
         // System provided variable for drawing to GPU
         SpriteBatch spriteBatch;
 
         // Sprites
+        List<Sprite> sprites = new List<Sprite>();
         UserControlledSprite player;
-        List<Sprite> apples = new List<Sprite>();
-        BeeSprite bee1, bee2;
-        List<Sprite> lives = new List<Sprite>();
-        BirdSprite bird;
-        BirdSprite bird2;
-        List<Sprite> tiles = new List<Sprite>();
-        //PlatformSprite platform;
-        //PlatformSprite platform2;
+        List<Sprite> apples = new List<Sprite>(); // Need to query array size and update
+        List<Sprite> lives = new List<Sprite>(); // Need to query array size and update
+        List<Sprite> tiles = new List<Sprite>(); // Needs to be passed into a function
+        
+        // Sounds
+        List<SoundEffect> sounds = new List<SoundEffect>();
+        
 
-
-        SoundEffect beeHit;
-        SoundEffect appleCollected;
-        SoundEffect deadBird;
-
-
-
+        // Constructor
         public SpriteManager(Game game) : base(game) { }
 
         /// <summary>
@@ -84,20 +82,20 @@ namespace Apple01
                         new Vector2(60, 30), new Point(101, 171), 0.19f));
 
             // Load bees sprites
-            bee1 = new BeeSprite(Game.Content.Load<Texture2D>(@"Images/Bee1"),
+            sprites.Add(new BeeSprite(Game.Content.Load<Texture2D>(@"Images/Bee1"),
                         new Vector2(600, GROUND_LEVEL), new Point(24,24), 5, new Point(0,0), 
-                        new Point(3,1), new Vector2(-3,0), 1f);
-            bee2 = new BeeSprite(Game.Content.Load<Texture2D>(@"Images/Bee2"),
+                        new Point(3,1), new Vector2(-3,0), 1f));
+            sprites.Add(new BeeSprite(Game.Content.Load<Texture2D>(@"Images/Bee2"),
                         new Vector2(900, GROUND_LEVEL + 30), new Point(24, 24), 5, new Point(0, 0),
-                        new Point(3, 1), new Vector2(-2, 0), 1f);
+                        new Point(3, 1), new Vector2(-2, 0), 1f));
 
             // Load bird sprite
-            bird = new BirdSprite(Game.Content.Load<Texture2D>(@"Images/Bird5"),
+            sprites.Add(new BirdSprite(Game.Content.Load<Texture2D>(@"Images/Bird5"),
                         new Vector2(500, 530), new Point(47, 44), 5, new Point(0, 0),
-                        new Point(9, 1), new Vector2(-2, 0), 1.17f);
-            bird2 = new BirdSprite(Game.Content.Load<Texture2D>(@"Images/Bird5"),
+                        new Point(9, 1), new Vector2(-2, 0), 1.17f));
+            sprites.Add(new BirdSprite(Game.Content.Load<Texture2D>(@"Images/Bird5"),
                         new Vector2(870, 430), new Point(47, 44), 5, new Point(0, 0),
-                        new Point(9, 1), new Vector2(-1.75f, 0), 1.17f);
+                        new Point(9, 1), new Vector2(-1.75f, 0), 1.17f));
 
             // Load player controlled character
             player = new UserControlledSprite(Game.Content.Load<Texture2D>(@"Images/Idle"),
@@ -118,9 +116,9 @@ namespace Apple01
 
 
             // Load Sound Effects
-            beeHit = Game.Content.Load<SoundEffect>(@"Sounds\Hit3");
-            appleCollected = Game.Content.Load<SoundEffect>(@"Sounds\AppleCollected");
-            deadBird = Game.Content.Load<SoundEffect>(@"Sounds\Bird03");
+            sounds.Add(Game.Content.Load<SoundEffect>(@"Sounds\Hit3"));
+            sounds.Add(Game.Content.Load<SoundEffect>(@"Sounds\AppleCollected"));
+            sounds.Add(Game.Content.Load<SoundEffect>(@"Sounds\Bird03"));
 
             base.LoadContent();
         }
@@ -148,7 +146,7 @@ namespace Apple01
                     ((ApplesGame)Game).AddScore(2);
 
                 // Play Apple Collected Sound
-                appleCollected.Play();
+                sounds[1].Play();
 
                 // Remove apple from apples list
                 apples.RemoveAt(i);
@@ -168,7 +166,7 @@ namespace Apple01
         // When player gets hit, reset location and reduce lives
         void onPlayerHit()
         {
-            beeHit.Play();
+            sounds[0].Play();
             player.Reset(new Vector2(0, GROUND_LEVEL));
             if (lives.Count != 0)
                 lives.RemoveAt(lives.Count - 1);
@@ -191,7 +189,7 @@ namespace Apple01
                 if (Math.Abs(player.collisionRect.Bottom - bird.collisionRect.Top) <= 6.8f)
                 {
                     bird.IsAlive = false;
-                    deadBird.Play();
+                    sounds[2].Play();
                     ((ApplesGame)Game).AddScore(10);
                 }
                 else
@@ -215,16 +213,16 @@ namespace Apple01
             //    loadApples();
 
             // Update bees
-            bee1.Update(gameTime, Game.Window.ClientBounds);
-            bee2.Update(gameTime, Game.Window.ClientBounds);
+            sprites[(int)SpriteType.bee1].Update(gameTime, Game.Window.ClientBounds);
+            sprites[(int)SpriteType.bee2].Update(gameTime, Game.Window.ClientBounds);
 
             // update birds
-            updateBird(bird, gameTime);
-            updateBird(bird2, gameTime);
+            updateBird(sprites[(int)SpriteType.bird1], gameTime);
+            updateBird(sprites[(int)SpriteType.bird2], gameTime);
 
             // Check for bees' intersection with player
-            if (bee1.collisionRect.Intersects(player.collisionRect) ||
-                bee2.collisionRect.Intersects(player.collisionRect))
+            if (sprites[(int)SpriteType.bee1].collisionRect.Intersects(player.collisionRect) ||
+                sprites[(int)SpriteType.bee2].collisionRect.Intersects(player.collisionRect))
             {
                 onPlayerHit();
             }
@@ -269,14 +267,14 @@ namespace Apple01
             player.Draw(gameTime, spriteBatch);
 
             // Draw birds
-            if(bird.IsAlive)
-                bird.Draw(gameTime, spriteBatch);
-            if(bird2.IsAlive)
-                bird2.Draw(gameTime, spriteBatch);
+            if (sprites[(int)SpriteType.bird1].IsAlive)
+                sprites[(int)SpriteType.bird1].Draw(gameTime, spriteBatch);
+            if (sprites[(int)SpriteType.bird2].IsAlive)
+                sprites[(int)SpriteType.bird2].Draw(gameTime, spriteBatch);
 
             // Draw the bees
-            bee1.Draw(gameTime, spriteBatch);
-            bee2.Draw(gameTime, spriteBatch);
+            sprites[(int)SpriteType.bee1].Draw(gameTime, spriteBatch);
+            sprites[(int)SpriteType.bee2].Draw(gameTime, spriteBatch);
 
             // Draw the apples
             foreach (Sprite sprite in apples)
@@ -294,6 +292,12 @@ namespace Apple01
             base.Draw(gameTime);
         }
 
+
+        /// <summary>
+        /// Draw the bird only if it has not been killed
+        /// </summary>
+        /// <param name="bird"></param>
+        /// <param name="gameTime"></param>
         void drawBird(Sprite bird, GameTime gameTime)
         {
             if (bird.IsAlive)

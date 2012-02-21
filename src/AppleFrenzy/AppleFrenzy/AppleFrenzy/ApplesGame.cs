@@ -24,30 +24,24 @@ namespace Apple01
         // Game Component for handling sprites
         SpriteManager spriteManager;
 
+        // Game States
         enum GameState { Start, ControlScreen, AboutScreen, InGame, GameOver };
         GameState currentGameState = GameState.Start;
 
         public int currentScore = 0;
         public SpriteFont scoreFont;
 
-        BackgroundSprite layer0, layer1, layer2;
-
-        // Start Menu title
-        Texture2D TitleScreenLogo;
-        // Apple Controls title
-        Texture2D ControlScreenLogo;
-        // About screen title
-        Texture2D AboutScreenLogo;
-        // Game Over Title
-        Texture2D EndScreenLogo;
+        // Title, Control, About and End screen textures
+        enum ScreenType { title, control, about, end };
+        List<Texture2D> screens = new List<Texture2D>();
+        
 
         //Song (.mp3) file        
         SoundEffect FrenzyAudio;        
         SoundEffectInstance frenzyAudioInstance;
 
-        // Apple stuff
-        AppleSprite fallingApple;
-
+        // Apple sprite and Background sprites
+        List<Sprite> sprites = new List<Sprite>();
 
         // Timer
         Timer timer;
@@ -138,28 +132,28 @@ namespace Apple01
             scoreFont = Content.Load<SpriteFont>(@"fonts\score");
            
             // Load Initial screen apple
-            fallingApple = new AppleSprite(Content.Load<Texture2D>(@"images\apple"), new Vector2(180, 180),
-                            new Point(28, 32), 0, new Vector2(0, 2), Window.ClientBounds, 1f);
+            sprites.Add(new AppleSprite(Content.Load<Texture2D>(@"images\apple"), new Vector2(180, 180),
+                            new Point(28, 32), 0, new Vector2(0, 2), Window.ClientBounds, 1f));
 
             // Load Background: 
-            layer0 = new BackgroundSprite(Content.Load<Texture2D>(@"Images\Layer0_0"),
-                    new Point(800, 480), 1.418f);
-            layer1 = new BackgroundSprite(Content.Load<Texture2D>(@"Images\Layer1_0"),
-                    new Point(800, 480), 1.418f, 0.9f);
-            layer2 = new BackgroundSprite(Content.Load<Texture2D>(@"Images\Layer2_0"),
-                    new Point(800, 480), 1.418f, 0.8f);
+            sprites.Add(new BackgroundSprite(Content.Load<Texture2D>(@"Images\Layer0_0"),
+                    new Point(800, 480), 1.418f));
+            sprites.Add(new BackgroundSprite(Content.Load<Texture2D>(@"Images\Layer1_0"),
+                    new Point(800, 480), 1.418f, 0.9f));
+            sprites.Add(new BackgroundSprite(Content.Load<Texture2D>(@"Images\Layer2_0"),
+                    new Point(800, 480), 1.418f, 0.8f));
 
             // Load Timer
             //timerFont = Content.Load<SpriteFont>(@"fonts\score");
             timer.LoadContent(Content);
             // Load Title Screen Background
-            TitleScreenLogo = Content.Load<Texture2D>(@"images\FrenzyTitleScreen");
+            screens.Add(Content.Load<Texture2D>(@"images\FrenzyTitleScreen"));
             // Load Game Controls title
-            ControlScreenLogo = Content.Load<Texture2D>(@"images\appleControls");
+            screens.Add(Content.Load<Texture2D>(@"images\appleControls"));
             // Load About Screen title
-            AboutScreenLogo = Content.Load<Texture2D>(@"images\aboutApple");
+            screens.Add(Content.Load<Texture2D>(@"images\aboutApple"));
             // Load Game Over Screen title
-            EndScreenLogo = Content.Load<Texture2D>(@"images\appleGameOver");
+            screens.Add(Content.Load<Texture2D>(@"images\appleGameOver"));
 
             //Load Sound Effect           
             FrenzyAudio = Content.Load<SoundEffect>(@"Sounds\Background");            
@@ -252,9 +246,9 @@ namespace Apple01
             {
                 case GameState.Start:
                     // Move the apple
-                    fallingApple.Update(gameTime, Window.ClientBounds);
-                    if (fallingApple.position.Y > Window.ClientBounds.Height)
-                        fallingApple.position.Y = -19;
+                    sprites[0].Update(gameTime, Window.ClientBounds);
+                    if (sprites[0].position.Y > Window.ClientBounds.Height)
+                        sprites[0].position.Y = -19;
 
                     // Start menu options:
                     // Enter - Start game, Space - Controls, A - About Game
@@ -313,8 +307,8 @@ namespace Apple01
 
                     // Draw text for intro splash screen
                     spriteBatch.Begin();
-                    spriteBatch.Draw(TitleScreenLogo, new Vector2(225, 150), Color.White);
-                    fallingApple.Draw(gameTime, spriteBatch);
+                    spriteBatch.Draw(screens[(int)ScreenType.title], new Vector2(225, 150), Color.White);
+                    sprites[0].Draw(gameTime, spriteBatch);
 
                     text = "Press Enter to START";
                     DisplayCenteredString(spriteBatch, text, 30);
@@ -336,7 +330,7 @@ namespace Apple01
 
                     // Display control screen logo
                     spriteBatch.Begin();
-                    spriteBatch.Draw(ControlScreenLogo, new Vector2(25, 50), Color.White);
+                    spriteBatch.Draw(screens[(int)ScreenType.control], new Vector2(25, 50), Color.White);
                     text = "The UP directional arrow allows the character to JUMP.";
                     DisplayCenteredString(spriteBatch, text, -30);
 
@@ -360,7 +354,7 @@ namespace Apple01
 
                     // Display about screen title
                     spriteBatch.Begin();
-                    spriteBatch.Draw(AboutScreenLogo, new Vector2(25, 50), Color.White);
+                    spriteBatch.Draw(screens[(int)ScreenType.about], new Vector2(25, 50), Color.White);
                     
                     text = "Development by: Ernesto Pavon, Corbin Benally & Alex Solis";
                     DisplayCenteredString(spriteBatch, text, -30);
@@ -388,9 +382,9 @@ namespace Apple01
                     spriteBatch.Begin();
 
                     // Draw Background: SpriteManager draws OVER this class, so need to draw BG here
-                    layer0.Draw(gameTime, spriteBatch);
-                    layer1.Draw(gameTime, spriteBatch);
-                    //layer2.Draw(gameTime, spriteBatch); // Enable this to allow a different look
+                    sprites[1].Draw(gameTime, spriteBatch);
+                    sprites[2].Draw(gameTime, spriteBatch);
+                    //sprites[3].Draw(gameTime, spriteBatch); // Enable this to allow a different look
 
                     // Draw the score
                     spriteBatch.DrawString(scoreFont, "Score: " + currentScore, new Vector2(10, 10),
@@ -406,7 +400,7 @@ namespace Apple01
                     GraphicsDevice.Clear(Color.AliceBlue);
                     // Draw Score at End Screen
                     spriteBatch.Begin();
-                    spriteBatch.Draw(EndScreenLogo, new Vector2(225, 150), Color.White);
+                    spriteBatch.Draw(screens[(int)ScreenType.end], new Vector2(225, 150), Color.White);
                     
                     DisplayCenteredString(spriteBatch, "Score: " + currentScore, -50);
 
