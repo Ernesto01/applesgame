@@ -12,14 +12,14 @@ namespace Apple01
     class UserControlledSprite : Sprite
     {
         // idle, run, die and jump animations are loaded for this character
-        public Animation idle, run, die, jump;
+        public enum AnimationType { Idle, Run, Die, Jump };
+        public List<Animation> animations = new List<Animation>();
+
+
         private SpriteEffects flip = SpriteEffects.None;
         float movement;
-     
         PlayerPhysics physics;
-
-        // Address animations 
-        public enum AnimationType { idle, run, die, jump };
+        
 
         /* Constructors */
         public UserControlledSprite(Texture2D textImage, Vector2 pos, Point frameSize,
@@ -56,7 +56,7 @@ namespace Apple01
             this.position = position;
             velocity = Vector2.Zero;
             IsAlive = true;
-            currentAnimation = idle;
+            currentAnimation = animations[(int)AnimationType.Idle];
         }
 
         // Load and initialize animations, sounds, etc...
@@ -65,14 +65,14 @@ namespace Apple01
             
       
             ContentManager content = new ContentManager(serviceProvider, "Content");
-            idle = new Animation(content.Load<Texture2D>(@"Images/Idle"), new Point(64, 64),
-                                new Point(0, 0), new Point(1, 1));
-            run = new Animation(content.Load<Texture2D>(@"Images/Run"), new Point(64, 64),
-                                new Point(0, 0), new Point(10, 1));
-            jump = new Animation(content.Load<Texture2D>(@"Images/Jump"), new Point(64, 64),
-                                new Point(0, 0), new Point(11, 1), 70);
-            die = new Animation(content.Load<Texture2D>(@"Images/Die"), new Point(64, 64),
-                                new Point(0, 0), new Point(12, 1));
+            animations.Add(new Animation(content.Load<Texture2D>(@"Images/Idle"), new Point(64, 64),
+                                new Point(0, 0), new Point(1, 1)));
+            animations.Add(new Animation(content.Load<Texture2D>(@"Images/Run"), new Point(64, 64),
+                                new Point(0, 0), new Point(10, 1)));
+            animations.Add(new Animation(content.Load<Texture2D>(@"Images/Jump"), new Point(64, 64),
+                                new Point(0, 0), new Point(11, 1), 70));
+            animations.Add(new Animation(content.Load<Texture2D>(@"Images/Die"), new Point(64, 64),
+                                new Point(0, 0), new Point(12, 1)));
         }
 
         /// <summary>
@@ -109,9 +109,9 @@ namespace Apple01
             if (IsAlive && physics.OnGround)
             {
                 if (Math.Abs(velocity.X) - 0.02f > 0)
-                    currentAnimation = run;
+                    currentAnimation = animations[(int)AnimationType.Run];
                 else
-                    currentAnimation = idle;
+                    currentAnimation = animations[(int)AnimationType.Idle];
             }
 
             // Clear input

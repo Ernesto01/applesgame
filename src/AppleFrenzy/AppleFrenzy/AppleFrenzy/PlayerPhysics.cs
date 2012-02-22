@@ -143,7 +143,7 @@ namespace AppleFrenzy
                 if ((!wasJumping && OnGround) || jumpTime > 0f)
                 {
                     jumpTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    player.setAnimation(player.jump);
+                    player.setAnimation(player.animations[2]); // Set Jump animation
                 }
                 // if we are in the ascent of the the jump
                 if (0f < jumpTime && jumpTime <= MaxJumpTime)

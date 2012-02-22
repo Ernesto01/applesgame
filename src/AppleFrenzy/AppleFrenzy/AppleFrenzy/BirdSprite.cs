@@ -24,6 +24,13 @@ namespace AppleFrenzy
             IsAlive = true;
         }
 
+        /// <summary>
+        /// Brings birds back from the dead
+        /// </summary>
+        public void Reset()
+        {
+            IsAlive = true;
+        }
 
         /// <summary>
         /// return velocity for its direction

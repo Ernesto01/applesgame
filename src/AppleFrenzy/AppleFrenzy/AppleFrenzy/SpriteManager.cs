@@ -27,7 +27,7 @@ namespace Apple01
         SpriteBatch spriteBatch;
 
         // Sprites
-        List<Sprite> sprites = new List<Sprite>();
+        List<Sprite> sprites = new List<Sprite>(); // bees and birds sprites, use enum to address
         UserControlledSprite player;
         List<Sprite> apples = new List<Sprite>(); // Need to query array size and update
         List<Sprite> lives = new List<Sprite>(); // Need to query array size and update
@@ -60,6 +60,7 @@ namespace Apple01
             // more expensive than CPU operations. 
             apples = new List<Sprite>();
             lives = new List<Sprite>();
+            sprites = new List<Sprite>();
             LoadContent();
         }
 
@@ -140,7 +141,7 @@ namespace Apple01
             // Check for collisions
             if (sprite.collisionRect.Intersects(player.collisionRect))
             { 
-                if (sprite.collisionRect.Bottom < GROUND_LEVEL + 65)
+                if (sprite.RectangleBottom < GROUND_LEVEL + 65)
                     ((ApplesGame)Game).AddScore(4);
                 else
                     ((ApplesGame)Game).AddScore(2);
@@ -156,7 +157,7 @@ namespace Apple01
                 if (apples.Count <= 3)
                     loadApples();
             }
-            if (sprite.collisionRect.Bottom >= GROUND_LEVEL + 72 || 
+            if (sprite.RectangleBottom >= GROUND_LEVEL + 72 || 
                 sprite.collisionRect.Intersects(tiles[0].collisionRect) ||
                 sprite.collisionRect.Intersects(tiles[1].collisionRect))
                 sprite.stopVerticalMovement();
@@ -186,7 +187,7 @@ namespace Apple01
             // Check for bird collision detection
             if (bird.collisionRect.Intersects(player.collisionRect))
             {
-                if (Math.Abs(player.collisionRect.Bottom - bird.collisionRect.Top) <= 6.8f)
+                if (Math.Abs(player.RectangleBottom - bird.RectangleTop) <= 6.8f)
                 {
                     bird.IsAlive = false;
                     sounds[2].Play();

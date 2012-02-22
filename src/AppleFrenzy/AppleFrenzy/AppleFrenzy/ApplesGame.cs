@@ -28,14 +28,13 @@ namespace Apple01
         enum GameState { Start, ControlScreen, AboutScreen, InGame, GameOver };
         GameState currentGameState = GameState.Start;
 
-        public int currentScore = 0;
-        public SpriteFont scoreFont;
+        // Keeps track of score
+        Score score;
 
         // Title, Control, About and End screen textures
         enum ScreenType { title, control, about, end };
         List<Texture2D> screens = new List<Texture2D>();
         
-
         //Song (.mp3) file        
         SoundEffect FrenzyAudio;        
         SoundEffectInstance frenzyAudioInstance;
@@ -45,6 +44,7 @@ namespace Apple01
 
         // Timer
         Timer timer;
+
 
         // Constructor 
         public ApplesGame()
@@ -59,9 +59,9 @@ namespace Apple01
         /// Update the score
         /// </summary>
         /// <param name="score"></param>
-        public void AddScore(int score)
+        public void AddScore(int scoreAddition)
         {
-            currentScore += score;
+            score.currentScore += scoreAddition;
         }
 
 
@@ -87,7 +87,7 @@ namespace Apple01
                 // Initialize timer
                 timer.TimeRemaining = 60;
                 // Initialize score
-                currentScore = 0;
+                score.currentScore = 0;
                 // Initialize Game State
                 currentGameState = GameState.Start;
                 // Reset Sprite manager
@@ -113,8 +113,7 @@ namespace Apple01
 
             // Initialize timer
             timer = new Timer(60);
-            // Initialize score
-            currentScore = 0;
+        
             // Initialize Game State
             currentGameState = GameState.Start;
          
@@ -129,7 +128,7 @@ namespace Apple01
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            scoreFont = Content.Load<SpriteFont>(@"fonts\score");
+            
            
             // Load Initial screen apple
             sprites.Add(new AppleSprite(Content.Load<Texture2D>(@"images\apple"), new Vector2(180, 180),
@@ -159,6 +158,9 @@ namespace Apple01
             FrenzyAudio = Content.Load<SoundEffect>(@"Sounds\Background");            
             frenzyAudioInstance = FrenzyAudio.CreateInstance();            
             frenzyAudioInstance.IsLooped = true;  
+
+            // Initialize and Load Score - Make sure not to use or initialize elsewhere before this
+            score = new Score(Content); 
             
         }
 
@@ -287,9 +289,9 @@ namespace Apple01
         // Draw String to Display
         void DisplayCenteredString(SpriteBatch spriteBatch, String message, int yOffset)
         {
-            spriteBatch.DrawString(scoreFont, message, new Vector2((Window.ClientBounds.Width / 2)
-                        - (scoreFont.MeasureString(message).X / 2), (Window.ClientBounds.Height / 2)
-                        - (scoreFont.MeasureString(message).Y / 2) + yOffset), Color.SaddleBrown);
+            spriteBatch.DrawString(score.scoreFont, message, new Vector2((Window.ClientBounds.Width / 2)
+                        - (score.scoreFont.MeasureString(message).X / 2), (Window.ClientBounds.Height / 2)
+                        - (score.scoreFont.MeasureString(message).Y / 2) + yOffset), Color.SaddleBrown);
         }
 
         /// <summary>
@@ -387,8 +389,7 @@ namespace Apple01
                     //sprites[3].Draw(gameTime, spriteBatch); // Enable this to allow a different look
 
                     // Draw the score
-                    spriteBatch.DrawString(scoreFont, "Score: " + currentScore, new Vector2(10, 10),
-                        Color.DarkBlue, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
+                    score.Draw(spriteBatch);
                     
                     // Draw the time remaining
                     timer.Draw(spriteBatch);
@@ -402,7 +403,7 @@ namespace Apple01
                     spriteBatch.Begin();
                     spriteBatch.Draw(screens[(int)ScreenType.end], new Vector2(225, 150), Color.White);
                     
-                    DisplayCenteredString(spriteBatch, "Score: " + currentScore, -50);
+                    DisplayCenteredString(spriteBatch, "Score: " + score.currentScore, -50);
 
                     text = "(Press Enter key to try again)";
                     DisplayCenteredString(spriteBatch, text, 30);

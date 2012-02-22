@@ -111,6 +111,7 @@ namespace Apple01
         /* Functions */
         // Initialize will be used to initialize any class variables and states
         public virtual void Initialize(IServiceProvider serviceProvider) { }
+        public virtual void Reset() { }
 
         /// <summary>
         /// Stop vertical movement, useful so things don't go through ground
