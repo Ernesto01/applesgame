@@ -213,7 +213,8 @@ namespace Apple01
 
         void handleInput()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+            if (Keyboard.GetState().IsKeyDown(Keys.Enter) ||
+                GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed)
                 startGame();
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 controlGame();

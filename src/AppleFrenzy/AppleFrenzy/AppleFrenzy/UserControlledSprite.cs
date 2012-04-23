@@ -19,6 +19,8 @@ namespace Apple01
         private SpriteEffects flip = SpriteEffects.None;
         float movement;
         PlayerPhysics physics;
+
+        private GamePadState gamePadState;
         
 
         /* Constructors */
@@ -83,12 +85,20 @@ namespace Apple01
         /// <param name="keyboardState"></param>
         public void getInput(KeyboardState keyboardState)
         {
-            if (keyboardState.IsKeyDown(Keys.Right))
+            gamePadState = GamePad.GetState(PlayerIndex.One);
+
+            float gamepadMovement = gamePadState.ThumbSticks.Left.X;
+            if (Math.Abs(gamepadMovement) < 0.5f)
+                movement = 0.0f;
+            else
+                movement = MathHelper.Clamp(gamepadMovement, -1f, 1f);
+
+            if (keyboardState.IsKeyDown(Keys.Right) || gamePadState.IsButtonDown(Buttons.DPadRight))
                 movement = 1f;
-            if (keyboardState.IsKeyDown(Keys.Left))
+            if (keyboardState.IsKeyDown(Keys.Left) || gamePadState.IsButtonDown(Buttons.DPadLeft))
                 movement = -1f;
             // Handles jump
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            if (Keyboard.GetState().IsKeyDown(Keys.Up) || gamePadState.IsButtonDown(Buttons.A))
                 physics.isJumping = true;
 
         }
